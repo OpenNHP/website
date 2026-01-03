@@ -12,9 +12,10 @@ This repository contains the source code for the OpenNHP project website. The we
 
 | Page | Description |
 |------|-------------|
-| **Homepage** | Hero section with project overview, features, quick demo, and ecosystem preview |
+| **Homepage** | Hero section with project overview, features, and ecosystem preview |
 | **Vision** | The "Dark Forest" Internet concept and why NHP matters in the AI era |
 | **Specification** | IETF Internet-Draft and CSA Zero Trust specification details |
+| **Demo** | Live demo showing how NHP hides server ports from unauthorized users |
 | **Open Source** | OpenNHP Core, StealthDNS, and JS Agent projects |
 | **Research** | Academic papers and collaboration opportunities |
 | **Community** | Discord, GitHub Discussions, and contribution guidelines |
@@ -42,6 +43,7 @@ website/
 ├── index.html              # Homepage
 ├── vision.html             # Vision page
 ├── specification.html      # Specification page
+├── demo.html               # Live demo page
 ├── opensource.html         # Open Source ecosystem
 ├── research.html           # Research papers
 ├── community.html          # Community page
