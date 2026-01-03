@@ -88,8 +88,7 @@
             In this forest, hell is other people. An eternal threat that any life that exposes its own existence 
             will be swiftly wiped out."
             <cite style="display: block; margin-top: var(--spacing-sm); color: var(--text-muted); font-style: normal;">
-              — Liu Cixin, <em>The Dark Forest Hypothesis</em> 
-              <a href="https://en.wikipedia.org/wiki/Dark_forest_hypothesis" target="_blank" style="color: var(--accent-primary); text-decoration: none; margin-left: 0.5rem;">📖 Learn more</a>
+              — Liu Cixin, <a href="https://en.wikipedia.org/wiki/Dark_forest_hypothesis" target="_blank" style="color: var(--accent-primary); text-decoration: none;"><em>The Dark Forest Hypothesis</em></a>
             </cite>
           </blockquote>
           
@@ -109,7 +108,7 @@
             </li>
             <li style="display: flex; gap: var(--spacing-sm); margin-bottom: var(--spacing-md);">
               <span style="color: var(--accent-primary);">→</span>
-              <span><strong>Invisibility is the only strategy.</strong> If attackers can't find you, they can't attack you.</span>
+              <span><strong>Invisibility is the only strategy.</strong> <a href="#nhp-paradigm" style="color: var(--accent-primary);">If attackers can't find you, they can't attack you.</a></span>
             </li>
           </ul>
         </div>
@@ -333,15 +332,16 @@
       </div>
     </section>
 
-    <!-- The Problem with Traditional Security -->
-    <section class="section">
+    <!-- The NHP Solution -->
+    <section class="section" style="background: var(--bg-secondary);" id="nhp-paradigm">
       <div class="container container--narrow">
-        <div class="content-section">
-          <h2 class="content-section__title">The Failure of "Connect First, Authenticate Later"</h2>
+        <div class="content-section" style="border: none;">
+          <h2 class="content-section__title">The NHP Paradigm: Invisible by Default, Authenticate First, Connect Later</h2>
           
           <p>
-            Traditional network security follows a fundamentally flawed model: services are exposed to the network, 
-            and authentication happens <em>after</em> a connection is established. This creates multiple attack surfaces:
+            <strong>NHP (Network-Infrastructure Hiding Protocol)</strong> inverts the traditional security model. 
+            Instead of exposing services and authenticating <em>after</em> a connection is established, 
+            NHP hides everything by default—services only become visible after cryptographic authentication proves the client's identity.
           </p>
           
           <div class="comparison mt-lg">
@@ -349,8 +349,8 @@
               <thead>
                 <tr>
                   <th>Attack Surface</th>
-                  <th>Traditional Model</th>
-                  <th>NHP Model</th>
+                  <th>Traditional: Connect First</th>
+                  <th>NHP: Authenticate First</th>
                 </tr>
               </thead>
               <tbody>
@@ -382,21 +382,6 @@
               </tbody>
             </table>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- The NHP Solution -->
-    <section class="section" style="background: var(--bg-secondary);">
-      <div class="container container--narrow">
-        <div class="content-section" style="border: none;">
-          <h2 class="content-section__title">The NHP Paradigm: Authenticate Before Connect</h2>
-          
-          <p>
-            NHP inverts the traditional model. Instead of exposing services and hoping to detect attacks, 
-            NHP hides everything by default. Services only become visible and accessible after cryptographic 
-            authentication proves the client's identity.
-          </p>
           
           <div class="timeline mt-xl">
             <div class="timeline__item">
@@ -442,40 +427,84 @@
         <div class="content-section">
           <h2 class="content-section__title">NHP and TLS: Complementary, Not Competing</h2>
           
-          <p>
-            A common question: "Why do we need NHP when we have TLS?" The answer is that they solve 
-            different problems at different layers:
+          <p style="text-align: center; margin-bottom: var(--spacing-xl);">
+            NHP operates at OSI Layer 5 (Session), TLS at Layer 6 (Presentation). Together, they provide defense in depth.
           </p>
           
-          <div class="grid grid-2 gap-lg mt-lg">
-            <div class="card">
-              <div class="card__icon">🔐</div>
-              <h3 class="card__title">TLS (Transport Layer)</h3>
-              <p class="card__desc">
-                Protects data <em>during</em> transmission. Encrypts the channel after a connection is established. 
-                The service must be reachable for TLS handshake to begin.
-              </p>
-            </div>
-            
-            <div class="card">
-              <div class="card__icon">🛡️</div>
-              <h3 class="card__title">NHP (Session Layer)</h3>
-              <p class="card__desc">
-                Controls access <em>before</em> connection. Hides the service completely until authentication succeeds. 
-                The service is unreachable without NHP authorization.
-              </p>
+          <!-- OSI Layer Diagram -->
+          <div class="card" style="padding: var(--spacing-xl); background: linear-gradient(135deg, rgba(0, 255, 157, 0.05), rgba(124, 58, 237, 0.05));">
+            <div style="display: flex; flex-direction: column; gap: 0;">
+              
+              <!-- Layer 7 -->
+              <div style="display: flex; border: 1px solid var(--border-subtle); border-bottom: none;">
+                <div style="width: 80px; padding: 0.75rem; background: rgba(255,255,255,0.05); text-align: center; font-weight: 600; color: var(--text-muted); border-right: 1px solid var(--border-subtle);">L7</div>
+                <div style="flex: 1; padding: 0.75rem 1rem; color: var(--text-muted);">Application</div>
+                <div style="width: 200px; padding: 0.75rem 1rem; color: var(--text-muted); border-left: 1px solid var(--border-subtle);">HTTP, SMTP, etc.</div>
+              </div>
+              
+              <!-- Layer 6 - TLS -->
+              <div style="display: flex; border: 2px solid var(--accent-tertiary); background: rgba(124, 58, 237, 0.1);">
+                <div style="width: 80px; padding: 0.75rem; background: var(--accent-tertiary); text-align: center; font-weight: 700; color: white;">L6</div>
+                <div style="flex: 1; padding: 0.75rem 1rem; font-weight: 600; color: var(--accent-tertiary);">Presentation</div>
+                <div style="width: 200px; padding: 0.75rem 1rem; font-weight: 700; color: var(--accent-tertiary); border-left: 1px solid var(--accent-tertiary);">
+                  🔐 TLS
+                </div>
+              </div>
+              
+              <!-- Layer 5 - NHP -->
+              <div style="display: flex; border: 2px solid var(--accent-primary); border-top: none; background: rgba(0, 255, 157, 0.1);">
+                <div style="width: 80px; padding: 0.75rem; background: var(--accent-primary); text-align: center; font-weight: 700; color: var(--bg-primary);">L5</div>
+                <div style="flex: 1; padding: 0.75rem 1rem; font-weight: 600; color: var(--accent-primary);">Session</div>
+                <div style="width: 200px; padding: 0.75rem 1rem; font-weight: 700; color: var(--accent-primary); border-left: 1px solid var(--accent-primary);">
+                  🛡️ NHP
+                </div>
+              </div>
+              
+              <!-- Layer 4 - TCP/UDP -->
+              <div style="display: flex; border: 1px solid var(--border-subtle); border-top: none;">
+                <div style="width: 80px; padding: 0.75rem; background: rgba(255,255,255,0.05); text-align: center; font-weight: 600; color: var(--text-muted); border-right: 1px solid var(--border-subtle);">L4</div>
+                <div style="flex: 1; padding: 0.75rem 1rem; color: var(--text-muted);">Transport</div>
+                <div style="width: 200px; padding: 0.75rem 1rem; color: var(--text-muted); border-left: 1px solid var(--border-subtle);">TCP / UDP</div>
+              </div>
+              
+              <!-- Layer 3 -->
+              <div style="display: flex; border: 1px solid var(--border-subtle); border-top: none;">
+                <div style="width: 80px; padding: 0.75rem; background: rgba(255,255,255,0.05); text-align: center; font-weight: 600; color: var(--text-muted); border-right: 1px solid var(--border-subtle);">L3</div>
+                <div style="flex: 1; padding: 0.75rem 1rem; color: var(--text-muted);">Network</div>
+                <div style="width: 200px; padding: 0.75rem 1rem; color: var(--text-muted); border-left: 1px solid var(--border-subtle);">IP</div>
+              </div>
+              
+              <!-- Layer 2 -->
+              <div style="display: flex; border: 1px solid var(--border-subtle); border-top: none;">
+                <div style="width: 80px; padding: 0.75rem; background: rgba(255,255,255,0.05); text-align: center; font-weight: 600; color: var(--text-muted); border-right: 1px solid var(--border-subtle);">L2</div>
+                <div style="flex: 1; padding: 0.75rem 1rem; color: var(--text-muted);">Data Link</div>
+                <div style="width: 200px; padding: 0.75rem 1rem; color: var(--text-muted); border-left: 1px solid var(--border-subtle);">Ethernet</div>
+              </div>
+              
+              <!-- Layer 1 -->
+              <div style="display: flex; border: 1px solid var(--border-subtle); border-top: none; border-radius: 0 0 8px 8px;">
+                <div style="width: 80px; padding: 0.75rem; background: rgba(255,255,255,0.05); text-align: center; font-weight: 600; color: var(--text-muted); border-right: 1px solid var(--border-subtle); border-radius: 0 0 0 8px;">L1</div>
+                <div style="flex: 1; padding: 0.75rem 1rem; color: var(--text-muted);">Physical</div>
+                <div style="width: 200px; padding: 0.75rem 1rem; color: var(--text-muted); border-left: 1px solid var(--border-subtle); border-radius: 0 0 8px 0;"></div>
+              </div>
             </div>
           </div>
           
-          <p class="mt-lg">
-            <strong>TLS assumes reachability.</strong> It protects the conversation but can't prevent attackers 
-            from finding the service or attempting pre-authentication exploits.
-          </p>
-          
-          <p>
-            <strong>NHP ensures invisibility.</strong> It gates access so that only authorized clients can even 
-            begin a TLS handshake. Together, they provide defense in depth.
-          </p>
+          <!-- Comparison -->
+          <div class="grid grid-2 gap-lg mt-xl">
+            <div style="padding: var(--spacing-lg); border-left: 4px solid var(--accent-tertiary); background: rgba(124, 58, 237, 0.1); border-radius: 0 8px 8px 0;">
+              <h4 style="color: var(--accent-tertiary); margin-bottom: 0.5rem;">🔐 TLS: Encrypt After Connect</h4>
+              <p style="color: var(--text-secondary); margin: 0; font-size: 0.95rem;">
+                Service must be <strong>reachable</strong> for handshake. Protects data in transit, but attackers can still find and probe the service.
+              </p>
+            </div>
+            <div style="padding: var(--spacing-lg); border-left: 4px solid var(--accent-primary); background: rgba(0, 255, 157, 0.1); border-radius: 0 8px 8px 0;">
+              <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">🛡️ NHP: Authenticate Before Connect</h4>
+              <p style="color: var(--text-secondary); margin: 0; font-size: 0.95rem;">
+                Service is <strong>invisible</strong> until authenticated. No handshake possible without cryptographic proof of identity.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
