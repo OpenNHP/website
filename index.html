@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OpenNHP - The Zero Trust Protocol for the Dark Forest Internet in the AI Era. Protect your infrastructure with cryptography-powered network hiding.">
+  <meta name="keywords" content="OpenNHP, Zero Trust, Network Hiding Protocol, Cybersecurity, AI Security, SDP">
+  <meta name="author" content="OpenNHP Project">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="OpenNHP - Zero Trust Network Hiding Protocol">
+  <meta property="og:description" content="The protocol for the Dark Forest Internet in the AI Era">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.opennhp.org">
+  
+  <title>OpenNHP - Zero Trust Network Hiding Protocol</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/icons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+</head>
+<body>
+  <!-- Background Effects -->
+  <div class="bg-gradient-overlay"></div>
+  <div class="bg-grid"></div>
+  <div class="particles" id="particles"></div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__logo">
+          <img src="assets/images/logo.png" alt="OpenNHP Logo" style="height: 40px; width: auto;">
+        </a>
+        
+        <ul class="nav__menu" id="navMenu">
+          <li><a href="vision.html" class="nav__link">Vision</a></li>
+          <li><a href="specification.html" class="nav__link">Specification</a></li>
+          <li><a href="demo.html" class="nav__link">Demo</a></li>
+          <li><a href="opensource.html" class="nav__link">Open Source</a></li>
+          <li><a href="https://docs.opennhp.org" class="nav__link" target="_blank">Docs</a></li>
+          <li><a href="research.html" class="nav__link">Research</a></li>
+          <li><a href="community.html" class="nav__link">Community</a></li>
+        </ul>
+        
+        <div class="nav__cta">
+          <a href="https://github.com/OpenNHP/opennhp" class="btn btn--primary btn--sm" target="_blank">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+        
+        <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="section section--hero">
+    <div class="container">
+      <div class="hero">
+        <div class="hero__badges">
+          <div class="hero__badge">
+            <span>IETF Internet-Draft Published</span>
+          </div>          
+          <div class="hero__badge">
+            <span>CSA Specification Released</span>
+          </div>
+        </div>
+        
+        <h1 class="hero__title">
+          The Protocol for the<br>
+          <span class="text-gradient">Dark Forest Internet</span><br>
+          in the AI Era
+        </h1>
+        
+        <p class="hero__subtitle">
+          A cryptography-powered Zero Trust protocol that hides your infrastructure completely. 
+          Authenticate first, connect later. Invisible until trusted.
+        </p>
+        
+        <div class="hero__actions">
+          <a href="vision.html" class="btn btn--primary btn--lg">
+            Why It Matters
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="specification.html" class="btn btn--secondary btn--lg">
+            Read the Spec
+          </a>
+          <a href="https://github.com/OpenNHP/opennhp" class="btn btn--outline btn--lg" target="_blank">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            Star on GitHub
+          </a>
+        </div>
+        
+        <div class="hero__stats">
+          <div class="hero__stat">
+            <span class="hero__stat-value">13.7k+</span>
+            <span class="hero__stat-label">GitHub Stars</span>
+          </div>
+          <div class="hero__stat">
+            <span class="hero__stat-value">2.5k+</span>
+            <span class="hero__stat-label">Forks</span>
+          </div>
+          <div class="hero__stat">
+            <span class="hero__stat-value">&lt;10ms</span>
+            <span class="hero__stat-label">Auth Latency</span>
+          </div>
+          <div class="hero__stat">
+            <span class="hero__stat-value">10k/s</span>
+            <span class="hero__stat-label">Throughput</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Protocol Evolution -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-header__label">Protocol Evolution</span>
+        <h2 class="section-header__title">Third Generation of Network Hiding</h2>
+        <p class="section-header__desc">
+          From Port Knocking to SPA to NHP — the evolution of hiding network infrastructure from threats.
+        </p>
+      </div>
+      
+      <div class="timeline">
+        <div class="timeline__item">
+          <span class="timeline__label">Generation 1</span>
+          <h4 class="timeline__title">Port Knocking</h4>
+          <p class="timeline__desc">Simple but insecure. Vulnerable to replay attacks and eavesdropping.</p>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__label">Generation 2</span>
+          <h4 class="timeline__title">Single Packet Authorization (SPA)</h4>
+          <p class="timeline__desc">Improved security with encrypted packets. Limited by shared secrets and scalability issues.</p>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__label">Generation 3 — Now</span>
+          <h4 class="timeline__title">Network-Infrastructure Hiding Protocol (NHP)</h4>
+          <p class="timeline__desc">Modern cryptography (Noise Protocol, ECC), mutual authentication, and enterprise-grade scalability. Hides domains, IPs, and ports completely.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Features -->
+  <section class="section features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-header__label">Key Features</span>
+        <h2 class="section-header__title">Why OpenNHP?</h2>
+        <p class="section-header__desc">
+          Built for the AI era where attackers use LLMs to find and exploit vulnerabilities automatically.
+        </p>
+      </div>
+      
+      <div class="features__grid">
+        <div class="card">
+          <div class="card__icon">🔒</div>
+          <h3 class="card__title">Default-Deny Access</h3>
+          <p class="card__desc">All resources are hidden by default. Only authenticated and authorized users can even discover that services exist.</p>
+        </div>
+        
+        <div class="card">
+          <div class="card__icon">👁️‍🗨️</div>
+          <h3 class="card__title">Complete Infrastructure Hiding</h3>
+          <p class="card__desc">Hide domains, IP addresses, and ports. Attackers can't attack what they can't find. NXDOMAIN for unauthorized queries.</p>
+        </div>
+        
+        <div class="card">
+          <div class="card__icon">⚡</div>
+          <h3 class="card__title">High Performance</h3>
+          <p class="card__desc">10K authentication requests per second with sub-10ms latency. Built with Go for memory safety and concurrency.</p>
+        </div>
+        
+        <div class="card">
+          <div class="card__icon">🔐</div>
+          <h3 class="card__title">Modern Cryptography</h3>
+          <p class="card__desc">Noise Protocol Framework, Curve25519, ChaCha20-Poly1305. Proven secure key exchange to prevent MITM attacks.</p>
+        </div>
+        
+        <div class="card">
+          <div class="card__icon">🌐</div>
+          <h3 class="card__title">Flexible Deployment</h3>
+          <p class="card__desc">Client-to-Gateway, Client-to-Server, Server-to-Server, Gateway-to-Gateway. Standalone to multi-tenant clusters.</p>
+        </div>
+        
+        <div class="card">
+          <div class="card__icon">🔗</div>
+          <h3 class="card__title">Seamless Integration</h3>
+          <p class="card__desc">Works with existing IAM, DNS, FIDO, and Zero Trust policy engines. Extends rather than replaces your security stack.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ecosystem -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-header__label">Ecosystem</span>
+        <h2 class="section-header__title">Open Source Projects</h2>
+        <p class="section-header__desc">
+          A growing ecosystem of tools and implementations for Zero Trust network security.
+        </p>
+      </div>
+      
+      <div class="ecosystem">
+        <div class="ecosystem-card">
+          <div class="ecosystem-card__header">
+            <div class="ecosystem-card__icon">🛡️</div>
+            <div>
+              <h3 class="ecosystem-card__title">OpenNHP Core</h3>
+              <span class="ecosystem-card__subtitle">Reference Implementation</span>
+            </div>
+          </div>
+          <p class="ecosystem-card__desc">
+            The official NHP protocol implementation in Go. Includes nhp-agent, nhp-server, and nhp-ac components for complete Zero Trust deployments.
+          </p>
+          <div class="ecosystem-card__tags">
+            <span class="tag tag--accent">Go</span>
+            <span class="tag">Linux</span>
+            <span class="tag">Windows</span>
+            <span class="tag">macOS</span>
+          </div>
+          <a href="https://github.com/OpenNHP/opennhp" class="card__link" target="_blank">
+            View on GitHub
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        
+        <div class="ecosystem-card">
+          <div class="ecosystem-card__header">
+            <div class="ecosystem-card__icon">🌐</div>
+            <div>
+              <h3 class="ecosystem-card__title">StealthDNS</h3>
+              <span class="ecosystem-card__subtitle">Zero Trust DNS Client</span>
+            </div>
+          </div>
+          <p class="ecosystem-card__desc">
+            A DNS client powered by OpenNHP that implements invisible DNS resolution. Protected domains return NXDOMAIN to unauthorized clients.
+          </p>
+          <div class="ecosystem-card__tags">
+            <span class="tag tag--accent">DNS</span>
+            <span class="tag">Cross-Platform</span>
+            <span class="tag">Mobile SDK</span>
+          </div>
+          <a href="https://github.com/OpenNHP/stealth-dns" class="card__link" target="_blank">
+            View on GitHub
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        
+        <div class="ecosystem-card">
+          <div class="ecosystem-card__header">
+            <div class="ecosystem-card__icon">📜</div>
+            <div>
+              <h3 class="ecosystem-card__title">JS Agent</h3>
+              <span class="ecosystem-card__subtitle">Browser NHP Client</span>
+            </div>
+          </div>
+          <p class="ecosystem-card__desc">
+            JavaScript implementation of the NHP protocol for web applications. Enable Zero Trust access directly from the browser.
+          </p>
+          <div class="ecosystem-card__tags">
+            <span class="tag tag--accent">JavaScript</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Browser</span>
+          </div>
+          <a href="https://github.com/OpenNHP/js-agent" class="card__link" target="_blank">
+            View on GitHub
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Demo -->
+  <section class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-header__label">Quick Demo</span>
+        <h2 class="section-header__title">NHP in Action: Hiding Server Ports</h2>
+        <p class="section-header__desc">
+          See how OpenNHP makes your application server invisible to unauthorized users.
+        </p>
+      </div>
+      
+      <div class="grid grid-2 gap-lg" style="align-items: stretch;">
+        <!-- Before NHP -->
+        <div class="card" style="border-color: rgba(239, 68, 68, 0.3);">
+          <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-md);">
+            <span style="background: rgba(239, 68, 68, 0.2); color: #ef4444; padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.875rem; font-weight: 600;">BEFORE NHP</span>
+            <span style="color: #ef4444;">⚠️ Exposed</span>
+          </div>
+          <h3 class="card__title" style="margin-bottom: var(--spacing-md);">Application Server Ports Visible</h3>
+          
+          <div style="background: var(--bg-primary); border-radius: var(--radius-md); padding: var(--spacing-md); margin-bottom: var(--spacing-md);">
+            <code style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-secondary);">
+              <span style="color: var(--text-muted);">$ nmap -sS -p 1-65535 server.example.com</span>
+            </code>
+          </div>
+          
+          <div style="background: var(--bg-primary); border-radius: var(--radius-md); padding: var(--spacing-md); font-family: var(--font-mono); font-size: 0.8rem;">
+            <div style="color: var(--text-muted); margin-bottom: 8px;">PORT      STATE    SERVICE</div>
+            <div style="color: #ef4444);">22/tcp    open     ssh</div>
+            <div style="color: #ef4444;">80/tcp    open     http</div>
+            <div style="color: #ef4444;">443/tcp   open     https</div>
+            <div style="color: #ef4444;">3306/tcp  open     mysql</div>
+            <div style="color: #ef4444;">8080/tcp  open     http-proxy</div>
+          </div>
+          
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: var(--spacing-md);">
+            <span style="color: #ef4444;">✗</span> All ports visible to attackers<br>
+            <span style="color: #ef4444;">✗</span> Attack surface fully exposed<br>
+            <span style="color: #ef4444;">✗</span> Vulnerable to port scanning
+          </p>
+        </div>
+        
+        <!-- After NHP -->
+        <div class="card" style="border-color: var(--border-accent);">
+          <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-md);">
+            <span style="background: rgba(0, 255, 157, 0.2); color: var(--accent-primary); padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.875rem; font-weight: 600;">AFTER NHP</span>
+            <span style="color: var(--accent-primary);">🛡️ Protected</span>
+          </div>
+          <h3 class="card__title" style="margin-bottom: var(--spacing-md);">All Ports Hidden from Unauthorized</h3>
+          
+          <div style="background: var(--bg-primary); border-radius: var(--radius-md); padding: var(--spacing-md); margin-bottom: var(--spacing-md);">
+            <code style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-secondary);">
+              <span style="color: var(--text-muted);">$ nmap -sS -p 1-65535 server.example.com</span>
+            </code>
+          </div>
+          
+          <div style="background: var(--bg-primary); border-radius: var(--radius-md); padding: var(--spacing-md); font-family: var(--font-mono); font-size: 0.8rem;">
+            <div style="color: var(--text-muted); margin-bottom: 8px;">PORT      STATE    SERVICE</div>
+            <div style="color: var(--accent-primary);">All 65535 scanned ports are filtered</div>
+            <div style="color: var(--text-muted); margin-top: 12px;">Host seems down or heavily firewalled.</div>
+            <div style="color: var(--text-muted);">No ports visible to unauthorized scanners.</div>
+          </div>
+          
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: var(--spacing-md);">
+            <span style="color: var(--accent-primary);">✓</span> All ports invisible to attackers<br>
+            <span style="color: var(--accent-primary);">✓</span> Zero attack surface exposure<br>
+            <span style="color: var(--accent-primary);">✓</span> Only authenticated users can access
+          </p>
+        </div>
+      </div>
+      
+      <div style="text-align: center; margin-top: var(--spacing-xl);">
+        <p style="color: var(--text-secondary); margin-bottom: var(--spacing-md);">
+          With NHP enabled, your server becomes invisible to unauthorized network scans. 
+          Only authenticated clients can discover and access protected services.
+        </p>
+        <a href="https://docs.opennhp.org" class="btn btn--primary" target="_blank">
+          Try It Yourself
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section class="section">
+    <div class="container container--narrow">
+      <div class="section-header">
+        <span class="section-header__label">Comparison</span>
+        <h2 class="section-header__title">NHP vs SPA</h2>
+        <p class="section-header__desc">
+          Why NHP is the next evolution of network hiding technology.
+        </p>
+      </div>
+      
+      <div class="comparison">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>SPA</th>
+              <th>NHP</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Architecture</td>
+              <td>Coupled components</td>
+              <td class="highlight">Decoupled, horizontally scalable</td>
+            </tr>
+            <tr>
+              <td>Communication</td>
+              <td>One-way</td>
+              <td class="highlight">Bi-directional with status</td>
+            </tr>
+            <tr>
+              <td>Cryptography</td>
+              <td>Shared secrets</td>
+              <td class="highlight">PKI/IBC, Noise Framework</td>
+            </tr>
+            <tr>
+              <td>Hiding Capability</td>
+              <td>Ports only</td>
+              <td class="highlight">Domain, IP, and ports</td>
+            </tr>
+            <tr>
+              <td>Extensibility</td>
+              <td>SDP only</td>
+              <td class="highlight">All-purpose, customizable</td>
+            </tr>
+            <tr>
+              <td>Integration</td>
+              <td>Limited</td>
+              <td class="highlight">DNS, FIDO, IAM, Policy Engines</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section">
+    <div class="container container--narrow">
+      <div class="cta-section">
+        <h2 class="cta-section__title">Ready to Hide Your Infrastructure?</h2>
+        <p class="cta-section__desc">
+          Join thousands of developers building Zero Trust security with OpenNHP.
+        </p>
+        <div class="cta-section__actions">
+          <a href="https://docs.opennhp.org" class="btn btn--primary btn--lg" target="_blank">
+            Read the Docs
+          </a>
+          <a href="https://discord.gg/CSB6Dmc2" class="btn btn--secondary btn--lg" target="_blank">
+            Join Discord
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">
+            <img src="assets/images/logo.png" alt="OpenNHP Logo" style="height: 36px; width: auto;">
+          </a>
+          <p class="footer__desc">
+            The Zero Trust Network-Infrastructure Hiding Protocol for the AI era. 
+            Open source, cryptography-powered, built for modern threats.
+          </p>
+          <div class="footer__social">
+            <a href="https://github.com/OpenNHP" class="footer__social-link" target="_blank" aria-label="GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="https://discord.gg/CSB6Dmc2" class="footer__social-link" target="_blank" aria-label="Discord">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+            </a>
+            <a href="mailto:support@opennhp.org" class="footer__social-link" aria-label="Email">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="footer__col">
+          <h4 class="footer__col-title">Resources</h4>
+          <ul class="footer__links">
+            <li><a href="https://docs.opennhp.org" class="footer__link" target="_blank">Documentation</a></li>
+            <li><a href="https://github.com/OpenNHP/opennhp" class="footer__link" target="_blank">GitHub</a></li>
+            <li><a href="specification.html" class="footer__link">Specification</a></li>
+            <li><a href="research.html" class="footer__link">Research Papers</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer__col">
+          <h4 class="footer__col-title">Community</h4>
+          <ul class="footer__links">
+            <li><a href="https://discord.gg/CSB6Dmc2" class="footer__link" target="_blank">Discord</a></li>
+            <li><a href="https://github.com/OpenNHP/opennhp/discussions" class="footer__link" target="_blank">Discussions</a></li>
+            <li><a href="https://github.com/OpenNHP/opennhp/blob/main/CODE_OF_CONDUCT.md" class="footer__link" target="_blank">Code of Conduct</a></li>
+            <li><a href="https://github.com/OpenNHP/opennhp/graphs/contributors" class="footer__link" target="_blank">Contributors</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer__col">
+          <h4 class="footer__col-title">Sponsors</h4>
+          <ul class="footer__links">
+            <li><a href="https://layerv.ai" class="footer__link" target="_blank">LayerV.ai</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer__bottom">
+        <p>© 2026 OpenNHP Project. Released under Apache 2.0 License.</p>
+        <p>Made with ❤️ by the OpenNHP Community</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>
+

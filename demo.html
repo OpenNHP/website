@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OpenNHP Demo - See how NHP hides your application server ports from unauthorized users.">
+  <title>Demo - OpenNHP</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    @keyframes pulse-btn {
+      0%, 100% { transform: scale(1); box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4); }
+      50% { transform: scale(1.02); box-shadow: 0 6px 25px rgba(231, 76, 60, 0.6); }
+    }
+    .demo-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.1rem;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .demo-cta-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+    .demo-cta-btn--red {
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+      color: white;
+      box-shadow: 0 4px 20px rgba(231, 76, 60, 0.5);
+    }
+    .demo-cta-btn--blue {
+      background: linear-gradient(135deg, #3498db, #2980b9);
+      color: white;
+      box-shadow: 0 4px 20px rgba(52, 152, 219, 0.5);
+    }
+    .demo-cta-btn--green {
+      background: linear-gradient(135deg, #27ae60, #1e8449);
+      color: white;
+      box-shadow: 0 4px 20px rgba(39, 174, 96, 0.5);
+    }
+    .demo-cta-btn--purple {
+      background: linear-gradient(135deg, #9b59b6, #8e44ad);
+      color: white;
+      box-shadow: 0 4px 20px rgba(155, 89, 182, 0.5);
+    }
+  </style>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/icons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+</head>
+<body>
+  <!-- Background Effects -->
+  <div class="bg-gradient-overlay"></div>
+  <div class="bg-grid"></div>
+  <div class="particles" id="particles"></div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__logo">
+          <img src="assets/images/logo.png" alt="OpenNHP Logo" style="height: 40px; width: auto;">
+        </a>
+        
+        <ul class="nav__menu" id="navMenu">
+          <li><a href="vision.html" class="nav__link">Vision</a></li>
+          <li><a href="specification.html" class="nav__link">Specification</a></li>
+          <li><a href="demo.html" class="nav__link nav__link--active">Demo</a></li>
+          <li><a href="opensource.html" class="nav__link">Open Source</a></li>
+          <li><a href="https://docs.opennhp.org" class="nav__link" target="_blank">Docs</a></li>
+          <li><a href="research.html" class="nav__link">Research</a></li>
+          <li><a href="community.html" class="nav__link">Community</a></li>
+        </ul>
+        
+        <div class="nav__cta">
+          <a href="https://github.com/OpenNHP/opennhp" class="btn btn--primary btn--sm" target="_blank">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+        
+        <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="container">
+      <span class="page-header__label">Live Demo</span>
+      <h1 class="page-header__title">
+        OpenNHP <span class="text-gradient">Quick Demo</span>
+      </h1>
+      <p class="page-header__desc">
+        See how OpenNHP makes your application server completely invisible to unauthorized users.
+      </p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Live Demo -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section-header">
+          <h3 style="font-size: 1.25rem; font-weight: 500; color: var(--text-secondary); margin-bottom: var(--spacing-sm);">The OpenNHP Protected Server</h3>
+          <p class="section-header__desc">
+            <a href="https://acdemo.opennhp.org" target="_blank" style="color: #e74c3c; font-weight: 600; background: rgba(231, 76, 60, 0.15); padding: 0.2rem 0.6rem; border-radius: 6px; text-decoration: none; border: 1px solid rgba(231, 76, 60, 0.3);">https://acdemo.opennhp.org</a>
+          </p>
+        </div>
+        
+        <div class="content-section" style="border: none;">
+          <h3 style="margin-bottom: var(--spacing-md); font-size: 1.1rem; font-weight: 500; color: var(--text-secondary);">1) The Protected Server is by default "Invisible" to Unauthenticated Users</h3>
+          <p style="color: var(--text-secondary); margin-bottom: var(--spacing-lg);">
+            By default, any attempt to connect to the protected server will result in a <strong>TIME OUT</strong> error, 
+            as all ports are closed, making the server appear offline and effectively <em>"invisible."</em>
+          </p>
+          
+          <div class="card" style="margin-bottom: var(--spacing-xl);">
+            <p style="margin-bottom: var(--spacing-md);">Try accessing the protected server at:</p>
+            <a href="https://acdemo.opennhp.org" target="_blank" class="demo-cta-btn demo-cta-btn--red" style="margin-bottom: var(--spacing-lg);">
+              🚀 Try Access: acdemo.opennhp.org
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            
+            <img src="https://github.com/OpenNHP/opennhp/raw/main/docs/images/OpenNHP_ACDemo0.png" alt="NHP Demo - Server Invisible to Unauthenticated Users" style="width: 100%; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          </div>
+          
+          <h3 style="margin-bottom: var(--spacing-md); font-size: 1.1rem; font-weight: 500; color: var(--text-secondary);">2) Port Scanning Also Returns TIME OUT</h3>
+          <p style="color: var(--text-secondary); margin-bottom: var(--spacing-lg);">
+            Port scanning the server will also return a <strong>TIME OUT</strong> error. 
+            All ports appear closed to unauthorized scanners. Try it yourself with an online port scanner:
+          </p>
+          
+          <div class="card" style="margin-bottom: var(--spacing-xl);">
+            <a href="https://dnschecker.org/port-scanner.php?query=acdemo.opennhp.org&ptype=server" target="_blank" class="demo-cta-btn demo-cta-btn--blue" style="margin-bottom: var(--spacing-lg);">
+              🔍 Try Online Port Scanner
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <img src="https://github.com/OpenNHP/opennhp/raw/main/docs/images/OpenNHP_ScanDemo.png" alt="NHP Demo - Port Scanning Returns TIME OUT" style="width: 100%; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          </div>
+          
+          <h3 style="margin-bottom: var(--spacing-md); font-size: 1.1rem; font-weight: 500; color: var(--text-secondary);">3) Authenticate with Login Webpage or StealthDNS App</h3>
+          <p style="color: var(--text-secondary); margin-bottom: var(--spacing-lg);">
+            Use the <a href="https://demologin.opennhp.org/" target="_blank" style="color: var(--accent-primary);">Login Webpage</a> or <a href="https://github.com/OpenNHP/stealth-dns" target="_blank" style="color: var(--accent-primary);">StealthDNS App</a> to authenticate with the NHP server. 
+            After successful login, you can access the protected server.
+          </p>
+          
+          <div class="card" style="margin-bottom: var(--spacing-xl);">
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: var(--spacing-lg);">
+              <a href="https://demologin.opennhp.org/" target="_blank" class="demo-cta-btn demo-cta-btn--green">
+                🔐 Login Webpage
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+              <a href="https://github.com/OpenNHP/stealth-dns" target="_blank" class="demo-cta-btn demo-cta-btn--purple">
+                📱 StealthDNS App
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+            <img src="https://github.com/OpenNHP/opennhp/raw/main/docs/images/OpenNHP_DemoLogin.png" alt="NHP Demo - Login with StealthDNS" style="width: 100%; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          </div>
+          
+          <h3 style="margin-bottom: var(--spacing-md); font-size: 1.1rem; font-weight: 500; color: var(--text-secondary);">4) Access Granted After Authentication</h3>
+          <p style="color: var(--text-secondary); margin-bottom: var(--spacing-lg);">
+            After successful NHP authentication, the protected server becomes accessible. 
+            You can now see the protected content that was previously invisible.
+          </p>
+          
+          <div class="card" style="border-color: var(--border-accent);">
+            <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-md);">
+              <span style="background: rgba(0, 255, 157, 0.2); color: var(--accent-primary); padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.875rem; font-weight: 600;">AUTHENTICATED</span>
+              <span style="color: var(--accent-primary);">✓ Access Granted</span>
+            </div>
+            <img src="https://github.com/OpenNHP/opennhp/raw/main/docs/images/OpenNHP_ACDemo1.png" alt="NHP Demo - Access Granted After Authentication" style="width: 100%; border-radius: var(--radius-md); border: 1px solid var(--border-accent);">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hiding Server Ports -->
+    <section class="section" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-header__label">Port Hiding</span>
+          <h2 class="section-header__title">Hiding Application Server Ports</h2>
+          <p class="section-header__desc">
+            Before NHP, all server ports are exposed. After NHP, they become completely invisible.
+          </p>
+        </div>
+        
+        <div class="grid grid-2 gap-lg" style="align-items: stretch;">
+          <!-- Before NHP -->
+          <div class="card" style="border-color: rgba(239, 68, 68, 0.3);">
+            <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-md);">
+              <span style="background: rgba(239, 68, 68, 0.2); color: #ef4444; padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.875rem; font-weight: 600;">BEFORE NHP</span>
+              <span style="color: #ef4444;">⚠️ Exposed</span>
+            </div>
+            <h3 class="card__title" style="margin-bottom: var(--spacing-md);">Application Server Ports Visible</h3>
+            
+            <div style="background: var(--bg-primary); border-radius: var(--radius-md); padding: var(--spacing-md); margin-bottom: var(--spacing-md);">
+              <code style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-secondary);">
+                <span style="color: var(--text-muted);">$ nmap -sS -p 1-65535 server.example.com</span>
+              </code>
+            </div>
+            
+            <div style="background: var(--bg-primary); border-radius: var(--radius-md); padding: var(--spacing-md); font-family: var(--font-mono); font-size: 0.8rem;">
+              <div style="color: var(--text-muted); margin-bottom: 8px;">PORT      STATE    SERVICE</div>
+              <div style="color: #ef4444;">22/tcp    open     ssh</div>
+              <div style="color: #ef4444;">80/tcp    open     http</div>
+              <div style="color: #ef4444;">443/tcp   open     https</div>
+              <div style="color: #ef4444;">3306/tcp  open     mysql</div>
+              <div style="color: #ef4444;">8080/tcp  open     http-proxy</div>
+            </div>
+            
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: var(--spacing-md);">
+              <span style="color: #ef4444;">✗</span> All ports visible to attackers<br>
+              <span style="color: #ef4444;">✗</span> Attack surface fully exposed<br>
+              <span style="color: #ef4444;">✗</span> Vulnerable to port scanning
+            </p>
+          </div>
+          
+          <!-- After NHP -->
+          <div class="card" style="border-color: var(--border-accent);">
+            <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-md);">
+              <span style="background: rgba(0, 255, 157, 0.2); color: var(--accent-primary); padding: 4px 12px; border-radius: var(--radius-full); font-size: 0.875rem; font-weight: 600;">AFTER NHP</span>
+              <span style="color: var(--accent-primary);">🛡️ Protected</span>
+            </div>
+            <h3 class="card__title" style="margin-bottom: var(--spacing-md);">All Ports Hidden from Unauthorized</h3>
+            
+            <div style="background: var(--bg-primary); border-radius: var(--radius-md); padding: var(--spacing-md); margin-bottom: var(--spacing-md);">
+              <code style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-secondary);">
+                <span style="color: var(--text-muted);">$ nmap -sS -p 1-65535 server.example.com</span>
+              </code>
+            </div>
+            
+            <div style="background: var(--bg-primary); border-radius: var(--radius-md); padding: var(--spacing-md); font-family: var(--font-mono); font-size: 0.8rem;">
+              <div style="color: var(--text-muted); margin-bottom: 8px;">PORT      STATE    SERVICE</div>
+              <div style="color: var(--accent-primary);">All 65535 scanned ports are filtered</div>
+              <div style="color: var(--text-muted); margin-top: 12px;">Host seems down or heavily firewalled.</div>
+              <div style="color: var(--text-muted);">No ports visible to unauthorized scanners.</div>
+            </div>
+            
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: var(--spacing-md);">
+              <span style="color: var(--accent-primary);">✓</span> All ports invisible to attackers<br>
+              <span style="color: var(--accent-primary);">✓</span> Zero attack surface exposure<br>
+              <span style="color: var(--accent-primary);">✓</span> Only authenticated users can access
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section" style="background: var(--bg-secondary);">
+      <div class="container container--narrow">
+        <div class="section-header">
+          <span class="section-header__label">Process</span>
+          <h2 class="section-header__title">How NHP Works</h2>
+          <p class="section-header__desc">
+            The authentication-before-connection paradigm in action.
+          </p>
+        </div>
+        
+        <div class="timeline">
+          <div class="timeline__item">
+            <span class="timeline__label">Step 1</span>
+            <h4 class="timeline__title">Complete Invisibility</h4>
+            <p class="timeline__desc">
+              Protected resources have no public presence. DNS returns NXDOMAIN, ports appear closed, 
+              and IP addresses are unknown. To unauthorized observers, the service doesn't exist.
+            </p>
+          </div>
+          <div class="timeline__item">
+            <span class="timeline__label">Step 2</span>
+            <h4 class="timeline__title">Cryptographic Knock</h4>
+            <p class="timeline__desc">
+              Authorized clients send an encrypted "knock" packet using the Noise Protocol Framework. 
+              This proves their identity without revealing the service's existence to observers.
+            </p>
+          </div>
+          <div class="timeline__item">
+            <span class="timeline__label">Step 3</span>
+            <h4 class="timeline__title">Mutual Authentication</h4>
+            <p class="timeline__desc">
+              Both client and server authenticate each other using modern asymmetric cryptography. 
+              No shared secrets, no MITM vulnerability, no replay attacks.
+            </p>
+          </div>
+          <div class="timeline__item">
+            <span class="timeline__label">Step 4</span>
+            <h4 class="timeline__title">Time-Limited Access</h4>
+            <p class="timeline__desc">
+              Upon successful authentication, the client receives temporary access. 
+              Firewall rules are dynamically created and automatically expire, minimizing exposure.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Performance -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section-header">
+          <span class="section-header__label">Performance</span>
+          <h2 class="section-header__title">Benchmark Results</h2>
+          <p class="section-header__desc">
+            NHP delivers high performance with minimal latency overhead.
+          </p>
+        </div>
+        
+        <div class="comparison">
+          <table>
+            <thead>
+              <tr>
+                <th>Operation</th>
+                <th>Throughput</th>
+                <th>Latency</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Authentication</td>
+                <td class="highlight">10K req/s</td>
+                <td class="highlight">&lt; 10ms</td>
+              </tr>
+              <tr>
+                <td>Port Hiding</td>
+                <td class="highlight">100K req/s</td>
+                <td class="highlight">&lt; 1ms</td>
+              </tr>
+              <tr>
+                <td>DNS Resolution</td>
+                <td class="highlight">50K req/s</td>
+                <td class="highlight">&lt; 5ms</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <p style="text-align: center; color: var(--text-muted); font-size: 0.9rem; margin-top: var(--spacing-md);">
+          *Tested on AWS t3.xlarge instance
+        </p>
+      </div>
+    </section>
+
+    <!-- Try It -->
+    <section class="section" style="background: var(--bg-secondary);">
+      <div class="container container--narrow">
+        <div class="section-header">
+          <span class="section-header__label">Try It</span>
+          <h2 class="section-header__title">Experience NHP Yourself</h2>
+          <p class="section-header__desc">
+            Try StealthDNS to see NHP in action. Access hidden services that are invisible to unauthorized users.
+          </p>
+        </div>
+        
+        <div class="grid grid-2 gap-lg">
+          <div class="card">
+            <div class="card__icon">🖥️</div>
+            <h3 class="card__title">StealthDNS Desktop</h3>
+            <p class="card__desc">
+              Full-featured GUI app for Windows, macOS, and Linux. Runs a local DNS resolver that performs NHP authentication before resolving protected domains.
+            </p>
+            <a href="https://github.com/OpenNHP/stealth-dns" class="card__link" target="_blank">
+              Download StealthDNS
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+          
+          <div class="card">
+            <div class="card__icon">📱</div>
+            <h3 class="card__title">StealthDNS Mobile</h3>
+            <p class="card__desc">
+              StealthDNS Browser app for iOS and Android with integrated NHP WebView. Access hidden services directly from your mobile device.
+            </p>
+            <a href="https://github.com/OpenNHP/stealth-dns" class="card__link" target="_blank">
+              Get Mobile App
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="cta-section">
+          <h2 class="cta-section__title">Ready to Hide Your Infrastructure?</h2>
+          <p class="cta-section__desc">
+            Deploy LayerV.ai NHP Platform and make your services invisible to attackers.
+          </p>
+          <div class="cta-section__actions">
+            <a href="https://layerv.ai" class="btn btn--primary btn--lg" target="_blank">
+              Get Started
+            </a>
+            <a href="https://github.com/OpenNHP/opennhp" class="btn btn--secondary btn--lg" target="_blank">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              Star on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">
+            <img src="assets/images/logo.png" alt="OpenNHP Logo" style="height: 36px; width: auto;">
+          </a>
+          <p class="footer__desc">
+            The Zero Trust Network-Infrastructure Hiding Protocol for the AI era.
+          </p>
+          <div class="footer__social">
+            <a href="https://github.com/OpenNHP" class="footer__social-link" target="_blank" aria-label="GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="https://discord.gg/CSB6Dmc2" class="footer__social-link" target="_blank" aria-label="Discord">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+            </a>
+            <a href="mailto:support@opennhp.org" class="footer__social-link" aria-label="Email">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="footer__col">
+          <h4 class="footer__col-title">Resources</h4>
+          <ul class="footer__links">
+            <li><a href="https://docs.opennhp.org" class="footer__link" target="_blank">Documentation</a></li>
+            <li><a href="https://github.com/OpenNHP/opennhp" class="footer__link" target="_blank">GitHub</a></li>
+            <li><a href="specification.html" class="footer__link">Specification</a></li>
+            <li><a href="research.html" class="footer__link">Research Papers</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer__col">
+          <h4 class="footer__col-title">Community</h4>
+          <ul class="footer__links">
+            <li><a href="https://discord.gg/CSB6Dmc2" class="footer__link" target="_blank">Discord</a></li>
+            <li><a href="https://github.com/OpenNHP/opennhp/discussions" class="footer__link" target="_blank">Discussions</a></li>
+            <li><a href="https://github.com/OpenNHP/opennhp/blob/main/CODE_OF_CONDUCT.md" class="footer__link" target="_blank">Code of Conduct</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer__col">
+          <h4 class="footer__col-title">Sponsors</h4>
+          <ul class="footer__links">
+            <li><a href="https://layerv.ai" class="footer__link" target="_blank">LayerV.ai</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer__bottom">
+        <p>© 2026 OpenNHP Project. Released under Apache 2.0 License.</p>
+        <p>Made with ❤️ by the OpenNHP Community</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>
+
