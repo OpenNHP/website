@@ -158,6 +158,59 @@
           <p class="timeline__desc">Modern cryptography (Noise Protocol, ECC), mutual authentication, and enterprise-grade scalability. Hides domains, IPs, and ports completely.</p>
         </div>
       </div>
+      
+      <!-- NHP vs SPA Comparison -->
+      <div style="margin-top: var(--spacing-xl);">
+        <h3 style="text-align: center; margin-bottom: var(--spacing-lg); color: var(--text-secondary);">NHP vs SPA</h3>
+        <div class="comparison">
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>SPA</th>
+                <th>NHP</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Cryptography</td>
+                <td>Shared secrets</td>
+                <td class="highlight">Modern Cryptography Algorithms (e.g. Noise, IBC, etc)</td>
+              </tr>
+              <tr>
+                <td>Scalability</td>
+                <td>Single-point bottleneck</td>
+                <td class="highlight">Stateless, infinitely scalable</td>
+              </tr>
+              <tr>
+                <td>Communication</td>
+                <td>One-way</td>
+                <td class="highlight">Bi-directional with status</td>
+              </tr>
+              <tr>
+                <td>Hiding Capability</td>
+                <td>Ports only</td>
+                <td class="highlight">Domain, IP, and ports</td>
+              </tr>
+              <tr>
+                <td>Extensibility</td>
+                <td>Typically SDP</td>
+                <td class="highlight">All-purpose, customizable</td>
+              </tr>
+              <tr>
+                <td>Library</td>
+                <td>C/C++ (memory-unsafe)</td>
+                <td class="highlight">Memory-safe Go (OpenNHP)</td>
+              </tr>
+              <tr>
+                <td>Integration</td>
+                <td>Limited</td>
+                <td class="highlight">DNS, FIDO, IAM, Policy Engines</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -290,68 +343,6 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Comparison -->
-  <section class="section">
-    <div class="container container--narrow">
-      <div class="section-header">
-        <span class="section-header__label">Comparison</span>
-        <h2 class="section-header__title">NHP vs SPA</h2>
-        <p class="section-header__desc">
-          Why NHP is the next evolution of network hiding technology.
-        </p>
-      </div>
-      
-      <div class="comparison">
-        <table>
-          <thead>
-            <tr>
-              <th>Feature</th>
-              <th>SPA</th>
-              <th>NHP</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Cryptography</td>
-              <td>Shared secrets</td>
-              <td class="highlight">Modern Cryptography Algorithms (e.g. Noise, IBC, etc)</td>
-            </tr>
-            <tr>
-              <td>Scalability</td>
-              <td>Single-point bottleneck</td>
-              <td class="highlight">Stateless, infinitely scalable</td>
-            </tr>
-            <tr>
-              <td>Communication</td>
-              <td>One-way</td>
-              <td class="highlight">Bi-directional with status</td>
-            </tr>
-            <tr>
-              <td>Hiding Capability</td>
-              <td>Ports only</td>
-              <td class="highlight">Domain, IP, and ports</td>
-            </tr>
-            <tr>
-              <td>Extensibility</td>
-              <td>Typically SDP</td>
-              <td class="highlight">All-purpose, customizable</td>
-            </tr>
-            <tr>
-              <td>Library</td>
-              <td>C/C++</td>
-              <td class="highlight">Memory-safe Go</td>
-            </tr>
-            <tr>
-              <td>Integration</td>
-              <td>Limited</td>
-              <td class="highlight">DNS, FIDO, IAM, Policy Engines</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
   </section>
