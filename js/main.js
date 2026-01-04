@@ -252,6 +252,32 @@ if (prefersReducedMotion.matches) {
 }
 
 // ============================================
+// GitHub Stars Counter
+// ============================================
+async function fetchGitHubStars() {
+  const starsEl = document.getElementById('github-stars');
+  if (!starsEl) return;
+  
+  try {
+    const response = await fetch('https://api.github.com/repos/OpenNHP/opennhp');
+    const data = await response.json();
+    const stars = data.stargazers_count;
+    
+    if (stars) {
+      if (stars >= 1000) {
+        starsEl.textContent = '⭐ ' + (stars / 1000).toFixed(1) + 'k';
+      } else {
+        starsEl.textContent = '⭐ ' + stars;
+      }
+    }
+  } catch (error) {
+    console.log('Could not fetch GitHub stars');
+  }
+}
+
+fetchGitHubStars();
+
+// ============================================
 // Console Easter Egg
 // ============================================
 console.log(`

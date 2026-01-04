@@ -45,9 +45,10 @@
         </ul>
         
         <div class="nav__cta">
-          <a href="https://github.com/OpenNHP/opennhp" class="btn btn--primary btn--sm" target="_blank">
+          <a href="https://github.com/OpenNHP/opennhp" class="btn btn--primary btn--sm" target="_blank" style="display: flex; align-items: center; gap: 0.5rem;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-            GitHub
+            <span>GitHub</span>
+            <span id="github-stars" style="background: rgba(255,255,255,0.2); padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.75rem;">⭐</span>
           </a>
         </div>
         
@@ -93,8 +94,9 @@
           </blockquote>
           
           <p>
-            The Internet has become a dark forest. Every exposed service is a signal that attracts hunters. 
-            In this environment:
+            With the rise of <strong style="color: var(--accent-primary);">GenAI</strong>, the Internet has become a dark forest. 
+            AI-powered attackers can scan, discover, and exploit vulnerabilities at unprecedented speed and scale. 
+            Every exposed service is a signal that attracts these tireless hunters. In this environment:
           </p>
           
           <ul style="list-style: none; margin: var(--spacing-lg) 0;">
@@ -207,6 +209,24 @@
               <strong>The math is clear:</strong>  Faster exploits + More vulnerabilities = <span style="color: #ef4444;">inevitable breach</span>.
               <br><span style="color: var(--accent-primary); font-weight: 600;">Unless you're invisible.</span>
             </p>
+          </div>
+          
+          <!-- Gartner's Conclusion -->
+          <div class="card mt-lg" style="padding: var(--spacing-lg); background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(124, 58, 237, 0.1)); border: 1px solid rgba(59, 130, 246, 0.3);">
+            <div style="display: flex; align-items: flex-start; gap: var(--spacing-md);">
+              <div style="flex-shrink: 0; width: 56px; height: 56px; background: linear-gradient(135deg, #002856, #004080); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                <span style="color: white; font-weight: 700; font-size: 0.7rem; text-align: center; line-height: 1.2;">GARTNER</span>
+              </div>
+              <div>
+                <blockquote style="margin: 0; font-size: 1.1rem; color: var(--text-primary); line-height: 1.6; font-style: italic;">
+                  "In the age of GenAI, <strong style="color: var(--accent-primary);">preemptive capabilities</strong>—not detection and response—are the future of cybersecurity."
+                </blockquote>
+                <p style="margin: var(--spacing-sm) 0 0 0; font-size: 0.85rem; color: var(--text-muted);">
+                  — Gartner, September 2025 
+                  <a href="https://www.gartner.com/en/newsroom/press-releases/2025-09-18-gartner-says-that-in-the-age-of-genai-preemptive-capabilities-not-detection-and-response-are-the-future-of-cybersecurity" target="_blank" style="color: var(--accent-primary); margin-left: 0.5rem;">Read more →</a>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -339,7 +359,7 @@
           <h2 class="content-section__title">The NHP Paradigm: Invisible by Default, Authenticate First, Connect Later</h2>
           
           <p>
-            <strong>NHP (Network-Infrastructure Hiding Protocol)</strong> inverts the traditional security model. 
+            <strong style="color: var(--accent-primary);">NHP (Network-Infrastructure Hiding Protocol)</strong> inverts the traditional security model. 
             Instead of exposing services and authenticating <em>after</em> a connection is established, 
             NHP hides everything by default—services only become visible after cryptographic authentication proves the client's identity.
           </p>
@@ -383,38 +403,279 @@
             </table>
           </div>
           
-          <div class="timeline mt-xl">
-            <div class="timeline__item">
-              <span class="timeline__label">Step 1</span>
-              <h4 class="timeline__title">Complete Invisibility</h4>
-              <p class="timeline__desc">
-                Protected resources have no public presence. DNS returns NXDOMAIN, ports appear closed, 
-                and IP addresses are unknown. To unauthorized observers, the service doesn't exist.
+          <!-- NHP Architecture Diagram (based on CSA Specification) -->
+          <div class="card mt-xl" style="padding: var(--spacing-xl); background: linear-gradient(135deg, rgba(0, 255, 157, 0.03), rgba(124, 58, 237, 0.03)); overflow: hidden;">
+            <style>
+              /* 
+               * Animation cycle (12 seconds total):
+               * - 0-1s: Step 1 appears (Knock - Agent glows blue)
+               * - 1-2s: Step 2 appears (Allow - AC glows yellow)
+               * - 2-3s: Step 3 appears (Grant - Server glows purple)
+               * - 3-4s: Step 4 appears (Connect - Resource glows green)
+               * - 4-8s: All visible (hold)
+               * - 8-9s: All fade out together
+               * - 9-12s: All invisible (pause before next cycle)
+               */
+              
+              /* Step animations */
+              @keyframes step1Cycle {
+                0% { opacity: 0; transform: translateY(10px); }
+                8% { opacity: 1; transform: translateY(0); }
+                67% { opacity: 1; transform: translateY(0); }
+                75% { opacity: 0; transform: translateY(-5px); }
+                100% { opacity: 0; transform: translateY(10px); }
+              }
+              @keyframes step2Cycle {
+                0%, 8% { opacity: 0; transform: translateY(10px); }
+                17% { opacity: 1; transform: translateY(0); }
+                67% { opacity: 1; transform: translateY(0); }
+                75% { opacity: 0; transform: translateY(-5px); }
+                100% { opacity: 0; transform: translateY(10px); }
+              }
+              @keyframes step3Cycle {
+                0%, 17% { opacity: 0; transform: translateY(10px); }
+                25% { opacity: 1; transform: translateY(0); }
+                67% { opacity: 1; transform: translateY(0); }
+                75% { opacity: 0; transform: translateY(-5px); }
+                100% { opacity: 0; transform: translateY(10px); }
+              }
+              @keyframes step4Cycle {
+                0%, 25% { opacity: 0; transform: translateY(10px); }
+                33% { opacity: 1; transform: translateY(0); }
+                67% { opacity: 1; transform: translateY(0); }
+                75% { opacity: 0; transform: translateY(-5px); }
+                100% { opacity: 0; transform: translateY(10px); }
+              }
+              
+              /* Agent glows blue during Knock (step 1) */
+              @keyframes agentGlow {
+                0% { box-shadow: 0 0 0 rgba(59, 130, 246, 0); border-color: #3b82f6; }
+                4% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8); transform: scale(1.03); }
+                8% { box-shadow: 0 0 10px rgba(59, 130, 246, 0.4); transform: scale(1); }
+                75%, 100% { box-shadow: 0 0 0 rgba(59, 130, 246, 0); border-color: #3b82f6; }
+              }
+              
+              /* AC: default red border, turns yellow after Allow (step 2), stays yellow until reset */
+              @keyframes acGlow {
+                0%, 8% { box-shadow: 0 0 0 rgba(234, 179, 8, 0); border-color: #ef4444; }
+                12% { box-shadow: 0 0 20px rgba(234, 179, 8, 0.8); border-color: #eab308; transform: scale(1.05); }
+                17% { box-shadow: 0 0 10px rgba(234, 179, 8, 0.4); border-color: #eab308; transform: scale(1); }
+                67% { box-shadow: 0 0 0 rgba(234, 179, 8, 0); border-color: #eab308; } /* Stay yellow until fade */
+                75% { box-shadow: 0 0 0 rgba(234, 179, 8, 0); border-color: #ef4444; } /* Reset to red */
+                100% { box-shadow: 0 0 0 rgba(234, 179, 8, 0); border-color: #ef4444; }
+              }
+              
+              /* Server: purple border, glows purple during Grant (step 3) */
+              @keyframes serverGlow {
+                0%, 17% { box-shadow: 0 0 0 rgba(168, 85, 247, 0); border-color: #a855f7; }
+                21% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.8); transform: scale(1.03); }
+                25% { box-shadow: 0 0 10px rgba(168, 85, 247, 0.4); transform: scale(1); }
+                75%, 100% { box-shadow: 0 0 0 rgba(168, 85, 247, 0); border-color: #a855f7; }
+              }
+              
+              /* Resource glows green during Connect (step 4) */
+              @keyframes resourceGlow {
+                0%, 25% { box-shadow: 0 0 0 rgba(0, 255, 157, 0); }
+                29% { box-shadow: 0 0 25px rgba(0, 255, 157, 0.9); transform: scale(1.05); }
+                33% { box-shadow: 0 0 15px rgba(0, 255, 157, 0.5); transform: scale(1); }
+                67% { box-shadow: 0 0 10px rgba(0, 255, 157, 0.3); }
+                75%, 100% { box-shadow: 0 0 0 rgba(0, 255, 157, 0); }
+              }
+              
+              /* Apply animations */
+              .nhp-arrow-1, .nhp-box-1 { animation: step1Cycle 12s ease-in-out infinite; }
+              .nhp-arrow-2, .nhp-box-2 { animation: step2Cycle 12s ease-in-out infinite; }
+              .nhp-arrow-3, .nhp-box-3 { animation: step3Cycle 12s ease-in-out infinite; }
+              .nhp-arrow-4, .nhp-box-4 { animation: step4Cycle 12s ease-in-out infinite; }
+              .nhp-comp-agent { animation: agentGlow 12s ease-in-out infinite; }
+              .nhp-comp-ac { animation: acGlow 12s ease-in-out infinite; }
+              .nhp-comp-server { animation: serverGlow 12s ease-in-out infinite; }
+              .nhp-comp-resource { animation: resourceGlow 12s ease-in-out infinite; }
+            </style>
+            
+            <h4 style="text-align: center; color: var(--text-secondary); margin-bottom: var(--spacing-md);">NHP Architecture and Workflow</h4>
+            
+            <!-- Core Components Description - Before Diagram -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-md); margin-bottom: var(--spacing-lg); padding-bottom: var(--spacing-md); border-bottom: 1px solid var(--border-subtle);">
+              <div style="text-align: center;">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                  <span style="font-size: 1.25rem;">👤</span>
+                  <span style="font-weight: 700; color: #3b82f6; font-size: 0.9rem;">NHP-Agent</span>
+                </div>
+                <p style="font-size: 0.75rem; color: var(--text-muted); margin: 0; line-height: 1.4;">
+                  Client-side component that initiates cryptographic knock requests to authenticate and gain access.
+                </p>
+              </div>
+              <div style="text-align: center;">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                  <span style="font-size: 1.25rem;">🛡️</span>
+                  <span style="font-weight: 700; color: #a855f7; font-size: 0.9rem;">NHP-Server</span>
+                </div>
+                <p style="font-size: 0.75rem; color: var(--text-muted); margin: 0; line-height: 1.4;">
+                  Cryptographically verifies identity of agents, coordinates with Auth Provider, and grants time-limited access tokens.
               </p>
             </div>
-            <div class="timeline__item">
-              <span class="timeline__label">Step 2</span>
-              <h4 class="timeline__title">Cryptographic Knock</h4>
-              <p class="timeline__desc">
-                Authorized clients send an encrypted "knock" packet using the Noise Protocol Framework. 
-                This proves their identity without revealing the service's existence to observers.
-              </p>
+              <div style="text-align: center;">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                  <span style="font-size: 1.25rem;">🚧</span>
+                  <span style="font-weight: 700; color: #ef4444; font-size: 0.9rem;">NHP-AC</span>
+                </div>
+                <p style="font-size: 0.75rem; color: var(--text-muted); margin: 0; line-height: 1.4;">
+                  Access Controller that enforces default-deny policy and opens ports only for verified agents.
+                </p>
+              </div>
             </div>
-            <div class="timeline__item">
-              <span class="timeline__label">Step 3</span>
-              <h4 class="timeline__title">Mutual Authentication</h4>
-              <p class="timeline__desc">
-                Both client and server authenticate each other using modern asymmetric cryptography. 
-                No shared secrets, no MITM vulnerability, no replay attacks.
-              </p>
+        
+            <!-- Main Architecture Diagram (Compact) -->
+            <div style="position: relative;">              
+              <!-- Control Plane (Dashed border, gray color) -->
+              <div style="border: 2px dashed rgba(156, 163, 175, 0.5); border-radius: 16px; padding: var(--spacing-md); margin-bottom: var(--spacing-sm); position: relative; background: rgba(156, 163, 175, 0.03);">
+                <!-- Control Plane Label -->
+                <div style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--bg-primary); padding: 0 0.75rem;">
+                  <span style="background: rgba(156, 163, 175, 0.2); color: #9ca3af; padding: 0.15rem 0.75rem; border-radius: 999px; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Control Plane</span>
+                </div>
+                
+                <!-- NHP Service Components -->
+                <div style="background: rgba(100, 116, 139, 0.08); border: 2px solid rgba(100, 116, 139, 0.3); border-radius: 12px; padding: var(--spacing-md); margin-top: var(--spacing-xs);">
+                  <div style="display: flex; gap: var(--spacing-md); justify-content: center; align-items: center;">
+                    <div class="nhp-comp-server" style="background: var(--bg-tertiary); border: 2px solid #a855f7; border-radius: 10px; padding: var(--spacing-sm); text-align: center; min-width: 100px;">
+                      <div style="font-size: 1.5rem;">🛡️</div>
+                      <div style="font-weight: 700; color: var(--text-primary); font-size: 0.8rem;">NHP-Server</div>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                      <span style="font-size: 0.8rem; color: var(--text-muted);">↔</span>
+                    </div>
+                    <div style="background: var(--bg-tertiary); border: 2px dashed var(--border-subtle); border-radius: 10px; padding: var(--spacing-sm); text-align: center; min-width: 100px;">
+                      <div style="font-size: 1.5rem;">🔐</div>
+                      <div style="font-weight: 600; color: var(--text-primary); font-size: 0.8rem;">Auth Provider</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Arrows between Control Plane and Data Plane - aligned with components below -->
+              <div style="display: flex; align-items: center; justify-content: center; gap: var(--spacing-xs); margin-bottom: var(--spacing-sm); margin-left: -90px;">
+                
+                <!-- Arrows above NHP-Agent (Requestor) - same width as Requestor box -->
+                <div style="min-width: 110px; display: flex; justify-content: center; gap: var(--spacing-sm);">
+                  <!-- Arrow 1: Agent → Server (Knock) - Blue -->
+                  <div class="nhp-arrow-1" style="display: flex; flex-direction: column; align-items: center;">
+                    <svg width="30" height="35" style="transform: rotate(180deg);">
+                      <defs><marker id="arr1" markerWidth="6" markerHeight="5" refX="5" refY="2.5" orient="auto"><polygon points="0 0, 6 2.5, 0 5" fill="#3b82f6"/></marker></defs>
+                      <line x1="15" y1="3" x2="15" y2="28" stroke="#3b82f6" stroke-width="2" marker-end="url(#arr1)"/>
+                    </svg>
+                    <span style="font-size: 0.6rem; color: #3b82f6; font-weight: 700; background: rgba(59, 130, 246, 0.2); padding: 0.1rem 0.3rem; border-radius: 3px;">① Knock</span>
+                  </div>
+                  
+                  <!-- Arrow 3: Server → Agent (Grant) - Purple -->
+                  <div class="nhp-arrow-3" style="display: flex; flex-direction: column; align-items: center;">
+                    <svg width="30" height="35">
+                      <defs><marker id="arr3" markerWidth="6" markerHeight="5" refX="5" refY="2.5" orient="auto"><polygon points="0 0, 6 2.5, 0 5" fill="#a855f7"/></marker></defs>
+                      <line x1="15" y1="3" x2="15" y2="28" stroke="#a855f7" stroke-width="2" marker-end="url(#arr3)"/>
+                    </svg>
+                    <span style="font-size: 0.6rem; color: #a855f7; font-weight: 700; background: rgba(168, 85, 247, 0.2); padding: 0.1rem 0.3rem; border-radius: 3px;">③ Grant</span>
+                  </div>
+                </div>
+                
+                <!-- Spacer - same width as Connect arrow (120px) -->
+                <div style="width: 120px;"></div>
+                
+                <!-- Arrows above NHP-AC (Provider) - same width as Provider box -->
+                <div style="display: flex; justify-content: flex-start; padding-left: var(--spacing-sm);">
+                  <!-- Arrow 2: Server → AC (Allow) - Yellow -->
+                  <div class="nhp-arrow-2" style="display: flex; flex-direction: column; align-items: center;">
+                    <svg width="30" height="35">
+                      <defs><marker id="arr2" markerWidth="6" markerHeight="5" refX="5" refY="2.5" orient="auto"><polygon points="0 0, 6 2.5, 0 5" fill="#eab308"/></marker></defs>
+                      <line x1="15" y1="3" x2="15" y2="28" stroke="#eab308" stroke-width="2" marker-end="url(#arr2)"/>
+                    </svg>
+                    <span style="font-size: 0.6rem; color: #eab308; font-weight: 700; background: rgba(234, 179, 8, 0.2); padding: 0.1rem 0.3rem; border-radius: 3px;">② Allow</span>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Data Plane (Dashed border, gray color) -->
+              <div style="border: 2px dashed rgba(156, 163, 175, 0.5); border-radius: 16px; padding: var(--spacing-md); position: relative; background: rgba(156, 163, 175, 0.03);">
+                <!-- Data Plane Label -->
+                <div style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--bg-primary); padding: 0 0.75rem;">
+                  <span style="background: rgba(156, 163, 175, 0.2); color: #9ca3af; padding: 0.15rem 0.75rem; border-radius: 999px; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Data Plane</span>
+                </div>
+                
+                <!-- Resource Requestor, Arrow, Resource Provider -->
+                <div style="display: flex; align-items: center; justify-content: center; gap: var(--spacing-xs); margin-top: var(--spacing-xs);">
+                  
+                  <!-- Left: Resource Requestor -->
+                  <div style="background: rgba(100, 116, 139, 0.08); border: 2px solid rgba(100, 116, 139, 0.3); border-radius: 12px; padding: var(--spacing-sm); min-width: 90px;">
+                    <div style="text-align: center; margin-bottom: 0.25rem;">
+                      <span style="font-size: 0.5rem; color: #64748b; font-weight: 600; text-transform: uppercase;">Resource Requestor</span>
+                    </div>
+                    <div class="nhp-comp-agent" style="background: var(--bg-tertiary); border: 2px solid #3b82f6; border-radius: 8px; padding: var(--spacing-xs); text-align: center;">
+                      <div style="font-size: 1.25rem;">👤</div>
+                      <div style="font-weight: 700; color: var(--text-primary); font-size: 0.7rem;">NHP-Agent</div>
+                    </div>
+                  </div>
+                  
+                  <!-- Arrow 4: Data Flow - Green -->
+                  <div class="nhp-arrow-4" style="display: flex; flex-direction: column; align-items: center;">
+                    <svg width="120" height="30">
+                      <defs>
+                        <marker id="arr4" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                          <polygon points="0 0, 8 3, 0 6" fill="#00ff9d"/>
+                        </marker>
+                      </defs>
+                      <line x1="0" y1="15" x2="108" y2="15" stroke="#00ff9d" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#arr4)"/>
+                    </svg>
+                    <span style="font-size: 0.6rem; color: #00ff9d; font-weight: 700; background: rgba(0, 255, 157, 0.2); padding: 0.1rem 0.4rem; border-radius: 3px;">④ Connect</span>
+                  </div>
+                  
+                  <!-- Right: Resource Provider (NHP-AC → Protected Resource) -->
+                  <div style="background: rgba(100, 116, 139, 0.08); border: 2px solid rgba(100, 116, 139, 0.3); border-radius: 12px; padding: var(--spacing-sm);">
+                    <div style="text-align: center; margin-bottom: 0.25rem;">
+                      <span style="font-size: 0.5rem; color: #64748b; font-weight: 600; text-transform: uppercase;">Resource Provider</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.25rem;">
+                      <!-- NHP-AC first - Red border (default deny) -->
+                      <div class="nhp-comp-ac" style="background: var(--bg-tertiary); border: 2px solid #ef4444; border-radius: 8px; padding: var(--spacing-xs); text-align: center;">
+                        <div style="font-size: 1rem;">🚧</div>
+                        <div style="font-weight: 600; color: var(--text-primary); font-size: 0.6rem;">NHP-AC</div>
+                      </div>
+                      <!-- Small arrow -->
+                      <svg width="18" height="12">
+                        <line x1="0" y1="6" x2="10" y2="6" stroke="#64748b" stroke-width="1.5"/>
+                        <polygon points="10,3 16,6 10,9" fill="#64748b"/>
+                      </svg>
+                      <!-- Protected Resource - Green border -->
+                      <div class="nhp-comp-resource" style="background: var(--bg-tertiary); border: 2px solid #00ff9d; border-radius: 8px; padding: var(--spacing-xs); text-align: center;">
+                        <div style="font-size: 1rem;">🖥️</div>
+                        <div style="font-weight: 600; color: var(--text-primary); font-size: 0.6rem;">Resource</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="timeline__item">
-              <span class="timeline__label">Step 4</span>
-              <h4 class="timeline__title">Time-Limited Access</h4>
-              <p class="timeline__desc">
-                Upon successful authentication, the client receives temporary access. 
-                Firewall rules are dynamically created and automatically expire, minimizing exposure.
-              </p>
+            
+            <!-- Flow Description - Compact, colors match arrows -->
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--spacing-sm); margin-top: var(--spacing-md);">
+              <div class="nhp-box-1" style="text-align: center; padding: var(--spacing-sm); background: rgba(59, 130, 246, 0.1); border-radius: 8px; border: 2px solid #3b82f6;">
+                <div style="background: #3b82f6; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; margin: 0 auto 0.25rem; font-size: 0.85rem;">1</div>
+                <div style="font-weight: 700; color: #3b82f6; font-size: 0.8rem;">Knock</div>
+                <div style="font-size: 0.6rem; color: var(--text-muted); margin-top: 0.15rem;">Agent → Server</div>
+              </div>
+              <div class="nhp-box-2" style="text-align: center; padding: var(--spacing-sm); background: rgba(234, 179, 8, 0.1); border-radius: 8px; border: 2px solid #eab308;">
+                <div style="background: #eab308; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; margin: 0 auto 0.25rem; font-size: 0.85rem;">2</div>
+                <div style="font-weight: 700; color: #eab308; font-size: 0.8rem;">Allow</div>
+                <div style="font-size: 0.6rem; color: var(--text-muted); margin-top: 0.15rem;">Server → AC</div>
+              </div>
+              <div class="nhp-box-3" style="text-align: center; padding: var(--spacing-sm); background: rgba(168, 85, 247, 0.1); border-radius: 8px; border: 2px solid #a855f7;">
+                <div style="background: #a855f7; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; margin: 0 auto 0.25rem; font-size: 0.85rem;">3</div>
+                <div style="font-weight: 700; color: #a855f7; font-size: 0.8rem;">Grant</div>
+                <div style="font-size: 0.6rem; color: var(--text-muted); margin-top: 0.15rem;">Server → Agent</div>
+              </div>
+              <div class="nhp-box-4" style="text-align: center; padding: var(--spacing-sm); background: rgba(0, 255, 157, 0.1); border-radius: 8px; border: 2px solid #00ff9d;">
+                <div style="background: #00ff9d; color: var(--bg-primary); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; margin: 0 auto 0.25rem; font-size: 0.85rem;">4</div>
+                <div style="font-weight: 700; color: #00ff9d; font-size: 0.8rem;">Connect</div>
+                <div style="font-size: 0.6rem; color: var(--text-muted); margin-top: 0.15rem;">Agent → Resource</div>
+              </div>
             </div>
           </div>
         </div>
@@ -592,4 +853,5 @@
   <script src="js/main.js"></script>
 </body>
 </html>
+
 
