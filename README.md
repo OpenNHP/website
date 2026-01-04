@@ -82,7 +82,7 @@ Then visit `http://localhost:8000`
 - **Main Project**: [github.com/OpenNHP/opennhp](https://github.com/OpenNHP/opennhp)
 - **Documentation**: [docs.opennhp.org](https://docs.opennhp.org)
 - **IETF Draft**: [draft-opennhp-saag-nhp](https://datatracker.ietf.org/doc/html/draft-opennhp-saag-nhp)
-- **Discord**: [OpenNHP Discord](https://discord.gg/CSB6Dmc2)
+- **Discord**: [OpenNHP Discord](https://discord.gg/CpyVmspx5x)
 
 ## Contributing
 

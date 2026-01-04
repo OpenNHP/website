@@ -288,7 +288,7 @@ console.log(`
 
 %cInterested in contributing? 
 → https://github.com/OpenNHP/opennhp
-→ https://discord.gg/CSB6Dmc2
+→ https://discord.gg/CpyVmspx5x
 
 %cProtocol Specification:
 → https://datatracker.ietf.org/doc/html/draft-opennhp-saag-nhp
