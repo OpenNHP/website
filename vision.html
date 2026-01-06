@@ -89,7 +89,7 @@
             In this forest, hell is other people. An eternal threat that any life that exposes its own existence 
             will be swiftly wiped out."
             <cite style="display: block; margin-top: var(--spacing-sm); color: var(--text-muted); font-style: normal;">
-              — Liu Cixin, <a href="https://en.wikipedia.org/wiki/Dark_forest_hypothesis" target="_blank" style="color: var(--accent-primary); text-decoration: none;"><em>The Dark Forest Hypothesis</em></a>
+              — Liu Cixin, <a href="https://en.wikipedia.org/wiki/Dark_forest_hypothesis" target="_blank" style="color: var(--accent-primary); text-decoration: none;"><em>The Dark Forest Hypothesis</em></a> (from <a href="https://en.wikipedia.org/wiki/The_Three-Body_Problem_(novel)" target="_blank" style="color: var(--text-muted); text-decoration: none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'"><em>The Three-Body Problem</em></a> trilogy)
             </cite>
           </blockquote>
           
@@ -107,6 +107,10 @@
             <li style="display: flex; gap: var(--spacing-sm); margin-bottom: var(--spacing-md);">
               <span style="color: var(--accent-primary);">→</span>
               <span><strong>Exposure is danger.</strong> <a href="#ai-exploits" style="color: var(--accent-primary);">AI can automatically discover and exploit every exposed service—24/7, at near-zero cost.</a></span>
+            </li>
+            <li style="display: flex; gap: var(--spacing-sm); margin-bottom: var(--spacing-md);">
+              <span style="color: var(--accent-primary);">→</span>
+              <span><strong>Public means stolen.</strong> <a href="#ai-harvesting" style="color: var(--accent-primary);">AI bots harvest your content instantly — permanently feeding models you never authorized and can't control.</a></span>
             </li>
             <li style="display: flex; gap: var(--spacing-sm); margin-bottom: var(--spacing-md);">
               <span style="color: var(--accent-primary);">→</span>
@@ -240,7 +244,7 @@
           
           <p>
             AI agents can now autonomously scan for exposed services, discover vulnerabilities, generate working exploits, 
-            and compromise systems—all without human intervention, 24/7, at near-zero cost. Every open port is an invitation.
+            and compromise systems—all without human intervention, <strong style="color: #ef4444;">24/7, at near-zero cost</strong>. Every open port is an invitation.
           </p>
           
           <div style="display: flex; flex-direction: column; gap: var(--spacing-md); margin-top: var(--spacing-lg);">
@@ -348,12 +352,97 @@
               </div>
             </div>
           </div>
+          
+          <div class="card mt-xl" style="padding: var(--spacing-lg); background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(220, 38, 38, 0.15)); border: 1px solid rgba(239, 68, 68, 0.3); text-align: center;">
+            <p style="font-size: 1.25rem; color: var(--text-primary); margin: 0;">
+              AI finds and exploits vulnerabilities faster than you can patch.
+              <br><span style="color: var(--accent-primary); font-weight: 600;">NHP eliminates the attack surface entirely — invisible services can't be exploited.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI Content Harvesting -->
+    <section class="section" style="background: var(--bg-secondary);" id="ai-harvesting">
+      <div class="container container--narrow">
+        <div class="content-section" style="border: none;">
+          <h2 class="content-section__title">PUBLIC = HARVESTED</h2>
+          
+          <p>
+            Even if your data is public and you're not worried about exploitation, you still can't control who consumes it.
+            AI bots crawl the Internet 24/7, at near-zero cost, instantly harvesting any content that becomes available. 
+            Your public data becomes part of AI training datasets — <strong style="color: #ef4444;">permanently, without your consent.</strong>
+          </p>
+          
+          <div style="display: flex; flex-direction: column; gap: var(--spacing-md); margin-top: var(--spacing-lg);">
+            <!-- Aug 2025 - Perplexity bypasses robots.txt -->
+            <div class="card" style="display: flex; gap: var(--spacing-lg); align-items: flex-start; padding: var(--spacing-lg);">
+              <div style="flex-shrink: 0; width: 56px; height: 56px; background: linear-gradient(135deg, #f97316, #ea580c); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 1.75rem;">🤖</span>
+              </div>
+              <div style="flex: 1;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                  <h3 class="card__title" style="margin: 0;">Perplexity AI Bypasses robots.txt Restrictions</h3>
+                  <span style="color: var(--text-muted); font-size: 0.8rem;">Aug 2025</span>
+                </div>
+                <p class="card__desc" style="margin-bottom: 0.75rem;">
+                  Cloudflare accused Perplexity AI of using "stealth crawling" techniques to bypass robots.txt directives,
+                  accessing content from websites that explicitly disallow AI scraping.
+                </p>
+                <a href="https://www.pcgamer.com/software/ai/cloudflare-calls-out-perplexity-for-hiding-crawling-activity-as-ai-bot-scrapes-websites-that-explicitly-disallow-it-perplexity-responds-by-calling-them-more-flair-than-cloud/" target="_blank" style="color: var(--accent-primary); font-size: 0.85rem;">PC Gamer Report →</a>
+              </div>
+            </div>
+            
+            <!-- Jun 2025 - Reddit sues Anthropic -->
+            <div class="card" style="display: flex; gap: var(--spacing-lg); align-items: flex-start; padding: var(--spacing-lg);">
+              <div style="flex-shrink: 0; width: 56px; height: 56px; border-radius: 12px; overflow: hidden; background: #ff4500;">
+                <img src="https://www.redditstatic.com/desktop2x/img/favicon/android-icon-192x192.png" alt="Reddit" style="width: 100%; height: 100%; object-fit: contain;">
+              </div>
+              <div style="flex: 1;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                  <h3 class="card__title" style="margin: 0;">Reddit Sues Anthropic for Unauthorized Scraping</h3>
+                  <span style="color: var(--text-muted); font-size: 0.8rem;">Jun 2025</span>
+                </div>
+                <p class="card__desc" style="margin-bottom: 0.75rem;">
+                  Reddit filed a lawsuit against Anthropic, alleging the company used automated bots to scrape Reddit user data 
+                  without consent to train Claude, violating terms of service and user privacy.
+                </p>
+                <a href="https://apnews.com/article/f5ea042beb253a3f05a091e70531692d" target="_blank" style="color: var(--accent-primary); font-size: 0.85rem;">AP News Report →</a>
+              </div>
+            </div>
+            
+            <!-- Apr 2025 - OpenAI memorizes copyrighted content -->
+            <div class="card" style="display: flex; gap: var(--spacing-lg); align-items: flex-start; padding: var(--spacing-lg);">
+              <div style="flex-shrink: 0; width: 56px; height: 56px; border-radius: 12px; overflow: hidden; background: #0a0;">
+                <img src="https://techcrunch.com/wp-content/uploads/2018/04/tc-logo-2018-square-reverse2x.png" alt="TechCrunch" style="width: 100%; height: 100%; object-fit: contain;">
+              </div>
+              <div style="flex: 1;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                  <h3 class="card__title" style="margin: 0;">OpenAI Models "Memorize" Copyrighted Content</h3>
+                  <span style="color: var(--text-muted); font-size: 0.8rem;">Apr 2025</span>
+                </div>
+                <p class="card__desc" style="margin-bottom: 0.75rem;">
+                  Research revealed that OpenAI's models may have "memorized" copyrighted content during training,
+                  raising serious legal and ethical questions about AI training data sources and consent.
+                </p>
+                <a href="https://techcrunch.com/2025/04/04/openais-models-memorized-copyrighted-content-new-study-suggests/" target="_blank" style="color: var(--accent-primary); font-size: 0.85rem;">TechCrunch Report →</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card mt-xl" style="padding: var(--spacing-lg); background: linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(234, 88, 12, 0.15)); border: 1px solid rgba(249, 115, 22, 0.3); text-align: center;">
+            <p style="font-size: 1.25rem; color: var(--text-primary); margin: 0;">
+              <strong>robots.txt won't save you.</strong> AI companies ignore it. Lawsuits come too late.
+              <br><span style="color: var(--accent-primary); font-weight: 600;">NHP makes your content invisible to unauthorized bots.</span>
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- The NHP Solution -->
-    <section class="section" style="background: var(--bg-secondary);" id="nhp-paradigm">
+    <section class="section" id="nhp-paradigm">
       <div class="container container--narrow">
         <div class="content-section" style="border: none;">
           <h2 class="content-section__title">The NHP Paradigm: Invisible by Default, Authenticate First, Connect Later</h2>
