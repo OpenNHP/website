@@ -12,7 +12,7 @@ og:
 
   <!-- Blog Announcement Bar (fixed below nav) -->
   <div style="position: fixed; top: 72px; left: 0; right: 0; z-index: 999; text-align: center; padding: 0.4rem 1rem; backdrop-filter: blur(20px);">
-    <a href="/blog/ietf-126-hackathon-opennhp-dark-forest/" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none;" onmouseover="this.style.color='var(--accent-primary)'" onmouseout="this.style.color='var(--text-muted)'">
+    <a href="/blog/ietf-126-hackathon-results/" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); text-decoration: none;" onmouseover="this.style.color='var(--accent-primary)'" onmouseout="this.style.color='var(--text-muted)'">
       <span style="background: var(--accent-primary); color: #0a0e17; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 999px; letter-spacing: 0.03em;">最新博客</span>
       <span>IETF 126 黑客马拉松结果：OpenNHP 依然屹立</span>
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -85,7 +85,7 @@ og:
       <div class="section-header">
         <span class="section-header__label">协议演进</span>
         <h2 class="section-header__title">第三代网络隐身技术</h2>
-        <p class="section-header__desc">
+        <p class="section-header__desc" style="max-width: none;">
           从端口敲门到 SPA 再到 NHP — 网络基础设施隐身技术的演进之路。
         </p>
       </div>
@@ -169,7 +169,7 @@ og:
       <div class="section-header">
         <span class="section-header__label">核心特性</span>
         <h2 class="section-header__title">为什么选择 OpenNHP？</h2>
-        <p class="section-header__desc">
+        <p class="section-header__desc" style="max-width: none;">
           专为 AI 时代打造，在这个时代攻击者利用大语言模型自动发现和利用漏洞。
         </p>
       </div>
@@ -220,7 +220,7 @@ og:
       <div class="section-header">
         <span class="section-header__label">生态系统</span>
         <h2 class="section-header__title">开源项目</h2>
-        <p class="section-header__desc">
+        <p class="section-header__desc" style="max-width: none;">
           一个不断壮大的零信任网络安全工具和实现生态系统。
         </p>
       </div>
@@ -292,6 +292,55 @@ og:
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Independent Security Research -->
+  <section class="section" id="independent-research" style="background: var(--bg-secondary);">
+    <div class="container container--narrow">
+      <div class="section-header">
+        <span class="section-header__label">验证</span>
+        <h2 class="section-header__title">独立安全研究</h2>
+        <p class="section-header__desc" style="max-width: none;">
+          OpenNHP 欢迎来自攻击性安全社区的独立评估。
+        </p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+        <a href="/blog/darkmoon-autonomous-ai-attacker-validates-opennhp/" class="card" style="display: block; padding: var(--spacing-xl); text-decoration: none; color: inherit;">
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: var(--spacing-md);">
+            <span style="font-size: 1.5rem; line-height: 1;">🛡️</span>
+            <h4 style="margin: 0; font-size: 1.15rem; color: var(--text-primary);">Darkmoon 自主 AI 攻击评估</h4>
+            <span style="margin-left: auto; color: var(--text-muted); font-size: 0.85rem; white-space: nowrap;">2026年7月29日</span>
+          </div>
+
+          <blockquote style="border-left: 3px solid var(--accent-primary); margin: 0 0 var(--spacing-md) 0; padding: 0.25rem 0 0.25rem 1rem; color: var(--text-secondary); font-size: 1rem; line-height: 1.7; font-style: italic;">
+            针对 OpenNHP 的自主 AI 渗透测试表明，基础设施隐身能够阻止攻击链在侦察阶段之后继续推进。
+          </blockquote>
+
+          <span class="card__link" style="display: inline-flex; align-items: center; gap: 0.4rem;">
+            阅读报告
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+
+        <a href="/blog/ietf-126-hackathon-results/" class="card" style="display: block; padding: var(--spacing-xl); text-decoration: none; color: inherit;">
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: var(--spacing-md);">
+            <span style="font-size: 1.5rem; line-height: 1;">🏛️</span>
+            <h4 style="margin: 0; font-size: 1.15rem; color: var(--text-primary);">IETF 126 黑客马拉松公开挑战</h4>
+            <span style="margin-left: auto; color: var(--text-muted); font-size: 0.85rem; white-space: nowrap;">2026年7月19日</span>
+          </div>
+
+          <blockquote style="border-left: 3px solid var(--accent-primary); margin: 0 0 var(--spacing-md) 0; padding: 0.25rem 0 0.25rem 1rem; color: var(--text-secondary); font-size: 1rem; line-height: 1.7; font-style: italic;">
+            IETF 社区为期一个月的公开对抗测试——没有任何参与者证明能够在没有有效密码学认证的情况下发现或访问受保护的资源。
+          </blockquote>
+
+          <span class="card__link" style="display: inline-flex; align-items: center; gap: 0.4rem;">
+            阅读结果
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </a>
       </div>
     </div>
   </section>

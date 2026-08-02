@@ -1,0 +1,477 @@
+---
+title: "当自主攻击者遇上隐身网络 - OpenNHP Blog"
+description: "开源自主 AI 渗透测试平台 Darkmoon 将矛头对准了 OpenNHP 的公开演示环境。在受 NHP 保护的主机上零发现。这为什么重要——以及为什么这并非故事的结局。"
+og:
+  title: "当自主攻击者遇上隐身网络"
+  description: "受 NHP 保护的主机上零发现。有意暴露的教学界面上 51 项发现。这实际说明了什么。"
+  type: "article"
+extra_css: |
+    .blog-article {
+        max-width: 740px;
+        margin: 0 auto;
+      }
+
+      .blog-meta {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        margin-bottom: var(--spacing-xl);
+        flex-wrap: wrap;
+      }
+
+      .blog-meta__author {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+
+      .blog-meta__author-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent-primary), #00b8ff);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #0a0e17;
+        flex-shrink: 0;
+      }
+
+      .blog-meta__date {
+        color: var(--text-muted);
+        font-size: 0.875rem;
+      }
+
+      .blog-meta__tag {
+        background: rgba(0, 255, 157, 0.1);
+        border: 1px solid rgba(0, 255, 157, 0.25);
+        color: var(--accent-primary);
+        padding: 0.2rem 0.65rem;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      .blog-divider {
+        border: none;
+        border-top: 1px solid var(--border-subtle);
+        margin: var(--spacing-xl) 0;
+      }
+
+      .blog-body p {
+        color: var(--text-secondary);
+        line-height: 1.8;
+        margin-bottom: var(--spacing-md);
+      }
+
+      .blog-body a {
+        color: var(--accent-primary);
+        text-decoration: none;
+      }
+
+      .blog-body a:hover {
+        text-decoration: underline;
+      }
+
+      .blog-body ul, .blog-body ol {
+        color: var(--text-secondary);
+        line-height: 1.8;
+        margin-bottom: var(--spacing-md);
+        padding-left: 1.5rem;
+      }
+
+      .blog-body li {
+        margin-bottom: 0.4rem;
+      }
+
+      .blog-footer {
+        border-top: 1px solid var(--border-subtle);
+        padding-top: var(--spacing-xl);
+        margin-top: var(--spacing-xl);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+      }
+
+      .blog-footer__back {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: var(--accent-primary);
+        font-size: 0.9rem;
+        text-decoration: none;
+      }
+
+      .blog-footer__back:hover {
+        text-decoration: underline;
+      }
+
+      .blog-footer__share {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+      }
+
+      .share-link {
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color var(--transition-base);
+      }
+
+      .share-link:hover {
+        color: var(--accent-primary);
+      }
+
+      .blog-section {
+        margin-bottom: var(--spacing-xl);
+      }
+
+      .blog-kicker {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(0,255,157,0.07);
+        border: 1px solid rgba(0,255,157,0.25);
+        color: var(--accent-primary);
+        padding: 0.55rem 1rem;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        margin-bottom: 1rem;
+      }
+
+      .highlight-quote {
+        border-left: 4px solid var(--accent-primary);
+        padding: 0.75rem 1rem;
+        background: rgba(0,255,157,0.05);
+        border-radius: 0 8px 8px 0;
+        margin: var(--spacing-md) 0;
+        color: var(--text-primary);
+        font-weight: 600;
+        font-size: 1rem;
+      }
+
+      .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 0.75rem;
+        margin: var(--spacing-md) 0;
+      }
+
+      .stat-card {
+        background: rgba(0,0,0,0.25);
+        border: 1px solid var(--border-subtle);
+        border-radius: 10px;
+        padding: 0.9rem 1rem;
+        text-align: center;
+      }
+
+      .stat-card__value {
+        font-family: 'Outfit', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--accent-primary);
+        line-height: 1.1;
+        display: block;
+      }
+
+      .stat-card__label {
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        margin-top: 0.25rem;
+        display: block;
+        line-height: 1.3;
+      }
+
+      .stat-card--warn .stat-card__value {
+        color: #ffb020;
+      }
+
+      .resource-row {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid var(--border-subtle);
+        text-decoration: none;
+        color: inherit;
+        transition: background 0.15s;
+      }
+
+      .resource-row:last-child {
+        border-bottom: none;
+      }
+
+      .resource-row:hover {
+        background: rgba(0,255,157,0.04);
+      }
+
+      .resource-row__icon {
+        font-size: 1.1rem;
+        flex-shrink: 0;
+      }
+
+      .resource-row__label {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        flex: 1;
+      }
+
+      .resource-row__link {
+        font-size: 0.85rem;
+        color: var(--accent-primary);
+      }
+
+      .blog-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: var(--spacing-md) 0;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid var(--border-subtle);
+        font-size: 0.9rem;
+      }
+
+      .blog-table th {
+        padding: 0.65rem 0.9rem;
+        text-align: left;
+        background: rgba(0,255,157,0.06);
+        color: var(--text-primary);
+        font-weight: 600;
+        border-bottom: 1px solid var(--border-subtle);
+      }
+
+      .blog-table td {
+        padding: 0.65rem 0.9rem;
+        color: var(--text-secondary);
+        border-bottom: 1px solid var(--border-subtle);
+      }
+
+      .blog-table tr:last-child td {
+        border-bottom: none;
+      }
+---
+  <header class="page-header">
+    <div class="container">
+      <span class="page-header__label">博客 · 独立安全测试</span>
+      <h1 class="page-header__title" style="font-size: clamp(1.75rem, 4vw, 2.75rem); max-width: 860px; margin-left: auto; margin-right: auto;">
+        当自主攻击者遇上 <span class="text-gradient">隐身网络</span>
+      </h1>
+      <p class="page-header__desc">
+        感谢 Darkmoon。受 NHP 保护主机上的零发现是一个数据点，而不是一场胜利宣言。
+      </p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section class="section">
+      <div class="container">
+        <article class="blog-article">
+
+          <div class="blog-meta">
+            <div class="blog-meta__author">
+              <div class="blog-meta__author-avatar">NHP</div>
+              <span>The OpenNHP Team</span>
+            </div>
+            <span class="blog-meta__date">2026年8月2日</span>
+            <span class="blog-meta__tag">零信任</span>
+            <span class="blog-meta__tag">AI 安全</span>
+            <span class="blog-meta__tag">独立测试</span>
+          </div>
+
+          <div class="blog-body">
+
+            <div class="highlight-quote">"你无法攻击你看不见的东西。"—— Darkmoon，评价自己的测试结果</div>
+
+            <div class="blog-section">
+              <p>2026 年 7 月 29 日，<a href="https://github.com/ASCIT31/Dark-Moon" target="_blank" rel="noopener">Darkmoon</a> 团队——一个由法国图卢兹 ASC-IT 打造的开源全自主 AI 渗透测试平台——将其系统对准了 OpenNHP 的公开演示环境，并<a href="https://dark-moon.org/blog/autonomous-ai-attacker-vs-opennhp/" target="_blank" rel="noopener">公布了结果</a>。</p>
+              <p>我们想从这里唯一真正重要的事情说起：<strong>谢谢你们。</strong> Darkmoon 针对一个真实运行的目标进行了真实、可复现、非破坏性的评估，然后公开发布了完整报告——方法论、工具、发现，一应俱全。这正是我们在 IETF 126 邀请安全社区<a href="/blog/ietf-126-hackathon-opennhp-dark-forest/">尝试攻破 OpenNHP</a> 时所期待的那种透明、独立的审视。</p>
+            </div>
+
+            <div class="blog-section">
+              <div class="blog-kicker">为什么自主 AI 攻击者是正确的测试对象</div>
+              <p>Darkmoon 不是一个手动运行 <code style="background: rgba(255,255,255,0.06); padding: 0.1rem 0.4rem; border-radius: 4px; font-family: var(--font-mono); font-size: 0.9em;">nmap</code> 的人。它是一个 LLM 编排器，指挥专门的子代理完成侦察、发现、利用和报告——完全自主，以机器速度运行。这正是<a href="/blog/glasswing-confirms-dark-forest-internet/">我们构建 OpenNHP 所针对的</a>那一类对手。攻击性 AI 工具并非假想中的未来威胁；它今天就是 GitHub 上的一个开源项目。</p>
+              <p>如果自主 AI 即将让侦察与利用的成本趋近于零，那么用恰恰是这类对手来测试一个网络隐身协议就不是可选项——这就是全部意义所在。</p>
+            </div>
+
+            <div class="blog-section">
+              <div class="blog-kicker">Darkmoon 具体做了什么</div>
+              <p>该评估遵循 NIST SP 800-115 和 OWASP 测试指南，针对 OpenNHP 的演示主机组合使用了多种独立侦察技术：</p>
+              <ul>
+                <li>通过 <code style="background: rgba(255,255,255,0.06); padding: 0.1rem 0.4rem; border-radius: 4px; font-family: var(--font-mono); font-size: 0.9em;">curl</code> 发起 HTTP/HTTPS 请求</li>
+                <li>使用 <code style="background: rgba(255,255,255,0.06); padding: 0.1rem 0.4rem; border-radius: 4px; font-family: var(--font-mono); font-size: 0.9em;">naabu</code> 扫描常见端口（22、80、443、8080）</li>
+                <li>通过 <code style="background: rgba(255,255,255,0.06); padding: 0.1rem 0.4rem; border-radius: 4px; font-family: var(--font-mono); font-size: 0.9em;">bash /dev/tcp</code> 进行 TCP connect 探测</li>
+                <li>ICMP 探测</li>
+              </ul>
+              <p>四种独立方法，针对位于 OpenNHP 的 Network-infrastructure Hiding Protocol (NHP) 之后的三台受保护主机（<code style="background: rgba(255,255,255,0.06); padding: 0.1rem 0.4rem; border-radius: 4px; font-family: var(--font-mono); font-size: 0.9em;">server2</code>、<code style="background: rgba(255,255,255,0.06); padding: 0.1rem 0.4rem; border-radius: 4px; font-family: var(--font-mono); font-size: 0.9em;">ac2</code> 和 Access Controller）。</p>
+            </div>
+
+            <div class="blog-section">
+              <div class="blog-kicker">结果</div>
+              <div class="stat-grid">
+                <div class="stat-card">
+                  <span class="stat-card__value">0</span>
+                  <span class="stat-card__label">四种探测方法下，三台受 NHP 保护主机上的发现数</span>
+                </div>
+                <div class="stat-card stat-card--warn">
+                  <span class="stat-card__value">51</span>
+                  <span class="stat-card__label">有意暴露的教学界面上的发现数</span>
+                </div>
+                <div class="stat-card">
+                  <span class="stat-card__value">4</span>
+                  <span class="stat-card__label">独立侦察方法，结果完全一致</span>
+                </div>
+              </div>
+
+              <p>关于第二个数字，我们想说得准确一些，因为我们不想把它藏起来。Darkmoon 的 51 项发现（4 高、10 中、17 低、20 信息）针对的是<em>公开认证后端</em>——这是我们在演示站点上有意暴露的组件，作为教学界面，让访问者能对比看到一个普通的、未受保护的 Web 服务是什么样子。高危发现涉及该组件中的跨域凭据暴露。这个界面从未置于 NHP 之后，在那里发现真实问题恰恰说明 Darkmoon 的工具运作如常。</p>
+
+              <table class="blog-table">
+                <thead>
+                  <tr>
+                    <th>目标</th>
+                    <th>保护</th>
+                    <th>发现</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>公开认证后端（教学界面）</td>
+                    <td>无 —— 有意暴露</td>
+                    <td>51（4 高、10 中、17 低、20 信息）</td>
+                  </tr>
+                  <tr>
+                    <td>server2、ac2、Access Controller</td>
+                    <td>OpenNHP（Network-infrastructure Hiding Protocol）</td>
+                    <td>0 —— 四种方法均如此</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="highlight-quote">"不是零个可利用的发现。是什么都没有。"—— Darkmoon 报告</div>
+              <p>在真正受 NHP 保护的主机上，Darkmoon 的扫描器没有找到配置错误、没有找到有价值的 banner、也没有找到任何可以下手的软肋。它们压根就没找到任何可看的东西。</p>
+            </div>
+
+            <div class="blog-section">
+              <div class="blog-kicker">这验证了什么</div>
+              <p>Darkmoon 自己的结论正是我们自己会选择的表述：OpenNHP 并不让服务坚不可摧，而是让它们<strong>在认证之前无法被发现</strong>。正如他们所说，这种方法通过移除每条攻击链所依赖的那个前提——可发现性——从而"将整个攻击面转移到凭据的保密性之上"。认证发生在连接<em>之前</em>，而不是之后。</p>
+              <p>这就是网络隐身的核心论点，由一个自主对手验证，而非由我们自己宣称。面对真实、现代、AI 驱动的攻击者取得的干净结果，是这一方法站得住脚的有力证据——不是它永远成立的证明，但确实是一个有分量的数据点，且由独立方产生并完整公开。</p>
+            </div>
+
+            <div class="blog-section">
+              <div class="blog-kicker">从零信任到零可见</div>
+              <p>零信任花了十年时间教会业界：不能仅因为一个连接来自边界内部就信任它。Darkmoon 的结果指向这一演进的下一步：不仅仅是拒绝信任未认证的连接——而是根本不让它存在。在暴露"这里有东西可连接"之前，先验证身份。</p>
+              <p>我们称之为零可见（Zero Visibility），并且认为这正是零信任架构的走向。自主 AI 攻击者正是业界必须更快抵达那里的原因。</p>
+            </div>
+
+            <div class="blog-section">
+              <div class="blog-kicker">开源意味着持续验证</div>
+              <p>安全永远不应仅仅依赖于其创造者的说辞。OpenNHP 之所以是一个开源项目，是因为安全通过透明、同行评审和独立验证而变得更好。</p>
+              <p>Darkmoon 的评估正是我们希望看到更多的那种协作：</p>
+              <ul>
+                <li>独立的攻击性测试</li>
+                <li>公开的方法论</li>
+                <li>可复现的实验</li>
+                <li>建设性的技术讨论</li>
+              </ul>
+              <div class="highlight-quote">测试越强，协议越强。</div>
+            </div>
+
+            <div class="blog-section">
+              <div class="blog-kicker">一份公开邀请</div>
+              <p>我们邀请研究人员、渗透测试人员、高校和 AI 安全团队使用自己的工具和方法来评估 OpenNHP。无论你的平台基于自主 AI 代理、传统渗透测试，还是全新的攻击技术，我们都欢迎独立评估。</p>
+              <p>一份来自优秀开源工具的干净报告并不是这场对话的终点——它是邀请更多对话的开始。如果有什么被攻破了，我们希望立刻知道，并且会像 Darkmoon 那样公开说明。在线演示环境正是为此而持续在线。</p>
+              <div class="highlight-quote">安全靠验证推进，而不是靠营销。</div>
+            </div>
+
+            <div class="blog-section">
+              <div class="blog-kicker">展望</div>
+              <p>人工智能正在改变网络安全的双方。攻击者正在变得自主。防御者必须变得主动。</p>
+              <p>OpenNHP 代表了零信任的一种可能演进——从单纯的"永不信任，始终验证"，走向一条在 AI 时代日益重要的补充原则：</p>
+              <div class="highlight-quote">非必要，不暴露（Never Expose Unless Necessary）。</div>
+              <p>我们衷心感谢 Darkmoon 团队为这场讨论作出的贡献。他们的评估有助于说明一个重要观点：当自主攻击者变得更快、更聪明、更廉价时，让基础设施对未授权用户不可见，将成为在攻击开始之前就加以阻止的最有效方式之一。</p>
+            </div>
+
+            <div class="blog-section">
+              <div class="blog-kicker">参考资源</div>
+              <div style="border: 1px solid var(--border-subtle); border-radius: 12px; overflow: hidden; margin: var(--spacing-md) 0;">
+                <a href="https://dark-moon.org/blog/autonomous-ai-attacker-vs-opennhp/" target="_blank" rel="noopener" class="resource-row">
+                  <span class="resource-row__icon">📄</span>
+                  <span class="resource-row__label">Darkmoon 完整报告</span>
+                  <span class="resource-row__link">dark-moon.org →</span>
+                </a>
+                <a href="https://github.com/ASCIT31/Dark-Moon" target="_blank" rel="noopener" class="resource-row">
+                  <span class="resource-row__icon">💻</span>
+                  <span class="resource-row__label">Darkmoon 源代码 — ASC-IT</span>
+                  <span class="resource-row__link">github.com →</span>
+                </a>
+                <a href="https://opennhp.org/demo/" target="_blank" rel="noopener" class="resource-row">
+                  <span class="resource-row__icon">🌐</span>
+                  <span class="resource-row__label">体验 OpenNHP 在线演示</span>
+                  <span class="resource-row__link">opennhp.org/demo →</span>
+                </a>
+                <a href="https://github.com/OpenNHP/opennhp" target="_blank" rel="noopener" class="resource-row">
+                  <span class="resource-row__icon">🔓</span>
+                  <span class="resource-row__label">OpenNHP 源代码</span>
+                  <span class="resource-row__link">github.com →</span>
+                </a>
+              </div>
+              <p>再次感谢 Darkmoon 与 ASC-IT 团队。独立、对抗性、公开发布的测试正应如此——OpenNHP 项目因此而更强。</p>
+            </div>
+
+            <div style="background: linear-gradient(135deg, rgba(0, 255, 157, 0.08), rgba(0, 184, 255, 0.05)); border: 1px solid rgba(0, 255, 157, 0.2); border-radius: 16px; padding: var(--spacing-xl); margin-top: var(--spacing-xl); text-align: center;">
+              <p style="font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.5rem;">
+                你无法攻击你看不见的东西。
+              </p>
+              <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: var(--spacing-md);">
+                带上你自己的工具——无论是否自主——来试试。
+              </p>
+              <div style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap; margin-bottom: var(--spacing-md);">
+                <a href="https://opennhp.org/demo/" target="_blank" rel="noopener" class="btn btn--primary btn--sm" style="text-decoration: none;">体验在线演示 →</a>
+                <a href="https://dark-moon.org/blog/autonomous-ai-attacker-vs-opennhp/" target="_blank" rel="noopener" class="btn btn--secondary btn--sm" style="text-decoration: none;">阅读 Darkmoon 报告 →</a>
+              </div>
+              <a href="/blog/ietf-126-hackathon-results/" style="color: var(--accent-primary); font-size: 0.9rem; display: inline-flex; align-items: center; text-decoration: none;">阅读：IETF 126 黑客马拉松结果 →</a>
+            </div>
+
+          </div>
+
+          <hr class="blog-divider">
+          <div class="blog-meta">
+            <div class="blog-meta__author">
+              <div class="blog-meta__author-avatar">NHP</div>
+              <span>The OpenNHP Team</span>
+            </div>
+            <span class="blog-meta__date">2026年8月2日</span>
+            <span class="blog-meta__tag">零信任</span>
+            <span class="blog-meta__tag">AI 安全</span>
+            <span class="blog-meta__tag">独立测试</span>
+          </div>
+
+          <div class="blog-footer">
+            <a href="/" class="blog-footer__back">
+              ← Back to OpenNHP.org
+            </a>
+            <div class="blog-footer__share">
+              <span>Share:</span>
+              <a href="https://twitter.com/intent/tweet?text=%E5%BD%93%E8%87%AA%E4%B8%BB%E6%94%BB%E5%87%BB%E8%80%85%E9%81%87%E4%B8%8A%E9%9A%90%E8%BA%AB%E7%BD%91%E7%BB%9C&url=https%3A%2F%2Fopennhp.org%2Fblog%2Fdarkmoon-autonomous-ai-attacker-validates-opennhp%2F" target="_blank" class="share-link" aria-label="Share on X">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fopennhp.org%2Fblog%2Fdarkmoon-autonomous-ai-attacker-validates-opennhp%2F" target="_blank" class="share-link" aria-label="Share on LinkedIn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </a>
+            </div>
+          </div>
+
+        </article>
+      </div>
+    </section>
+  </main>
